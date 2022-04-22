@@ -1,0 +1,24 @@
+.carousel-bar-wrapper{
+  width: 960px;
+  margin: auto;
+  height: 285px;
+  position: relative;
+  .leftBtn{
+    position: absolute;
+    width: 15%;
+    height: 285px;
+    top: 0;
+    right: 0;
+    background: pink;
+  }
+  .rightBtn{
+    position: absolute;
+    width: 15%;
+    height: 285px;
+    top: 0;
+    left: 0;
+    background: pink;
+  }
+}
+
+
