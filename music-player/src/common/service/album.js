@@ -2,7 +2,7 @@ import request from "./request";
 
 export function getAlbumList(){
   return request({
-    url:'/album/new?area=KR&limit=5'
+    url:'/album/new?limit=5'
   })
 }
 
