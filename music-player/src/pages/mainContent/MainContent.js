@@ -3,78 +3,49 @@ import Title from "./components/title/Title";
 import SideBar from "../sideBar/SideBar";
 import {useEffect, useState} from "react";
 
-import {getAlbumListAction, getArtistListAction,getRankingAction} from "./store/actionCreator"
-
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import {getArtistList} from "../../common/service/artist";
+import {getAlbumList} from "../../common/service/album";
+import {getRankingList} from "../../common/service/ranking";
+import {useNavigate} from "react-router-dom";
 
 
 function MainContent(){
-  const {
-    albumList,
-    artistList,
-    ranking1,
-    ranking2,
-    ranking3,
-  } = useSelector(
-      (state) => ({
-        albumList: state.getIn(["mainContent", "albumList"]),
-        artistList:state.getIn(["mainContent", "artistList"]),
-        ranking1:state.getIn(["mainContent", "ranking1"]),
-        ranking2:state.getIn(["mainContent", "ranking2"]),
-        ranking3:state.getIn(["mainContent", "ranking3"]),
-      }),
-      shallowEqual
-  );
+  const [artistList,setArtistList] = useState([])
+  const [albumList,setAlbumLIst] = useState([])
   const album = albumList || [];
   const artist = artistList || [];
-  const rank1 = ranking1.tracks || [];
-  const rank2 = ranking2.tracks || [];
-  const rank3 = ranking3.tracks || [];
-  const dispatch = useDispatch();
-
-  function changeTab(index){
-    dispatch(getArtistListAction(index,6))
+  const [rank1,setRank1] = useState([])
+  const [rank2,setRank2] = useState([])
+  const [rank3,setRank3] = useState([])
+  const navigate = useNavigate();
+  function handleSinger(id){
+    console.log(id)
+    navigate('/user/'+id)
   }
-  useEffect(() => {
-    dispatch(getAlbumListAction());
-    dispatch(getArtistListAction(1,6))
-    dispatch(getRankingAction(3778678));
-    dispatch(getRankingAction(3779629));
-    dispatch(getRankingAction(19723756));
-  }, [dispatch]);
-
-
+  function changeTab(index){
+    getArtistList(index,6).then((res)=>{
+      setArtistList(res && res.artists);
+    })
+  }
+  async function getData(){
+    let artists = await getArtistList(1,6)
+    setArtistList(artists && artists.artists);
+    let album = await getAlbumList()
+    setAlbumLIst(album && album.albums)
+    let rank1 = await getRankingList(180106)
+    setRank1(rank1 && rank1.playlist.tracks)
+    let rank2 = await getRankingList(60198)
+    setRank2(rank2 && rank2.playlist.tracks)
+    let rank3 = await getRankingList(3812895)
+    setRank3(rank3 && rank3.playlist.tracks)
+  }
+  useEffect(()=>{
+    getData()
+  },[])
   const navList= [
     {name:'Male Singer',type: 1,to:''},
     {name:'Female Singer',type: 2,to:''},
     {name:'Band',type: 3, to:''},
-  ]
-  // const artist = [
-  //   {name:'Charlie Puth',img:img5},
-  //   {name:'Charlie Puth',img:img1},
-  //   {name:'Charlie Puth',img:img1},
-  //   {name:'Charlie Puth',img:img5},
-  //   {name:'Charlie Puth',img:img5},
-  //   {name:'Charlie Puth',img:img5},
-  // ]
-  // const albumList=[
-  //   {name:'Charlie Puth',img:img5},
-  //   {name:'Charlie Puth',img:img1},
-  //   {name:'Charlie Puth',img:img1},
-  //   {name:'Charlie Puth',img:img5},
-  //   {name:'Charlie Puth',img:img5},
-  // ]
-  const rankList =[
-    {rank:1,song:'Charlie Puth Charlie Puth 11111111'},
-    {rank:2,song:'Charlie Puth Charlie Puth'},
-    {rank:3,song:'Charlie Puth Charlie Puth'},
-    {rank:4,song:'Charlie Puth Charlie Puth'},
-    {rank:5,song:'Charlie Puth Charlie Puth'},
-    {rank:6,song:'Charlie Puth Charlie Puth'},
-    {rank:7,song:'Charlie Puth Charlie Puth'},
-    {rank:8,song:'Charlie Puth Charlie Puth'},
-    {rank:9,song:'Charlie Puth Charlie Puth'},
-    {rank:10,song:'Charlie Puth Charlie Puth'},
   ]
   return(
       <div className="main-content-wrapper">
@@ -85,7 +56,7 @@ function MainContent(){
               return(
                   <div className="album-box" key={index}>
                     <div className="box">
-                      <img src={item.picUrl} alt=""/>
+                      <img src={item.picUrl+'?param=130y130'} alt=""/>
                     </div>
                     {item.name}
                   </div>
@@ -96,11 +67,11 @@ function MainContent(){
           <div className="new-album">
             {album && album.map((item,index)=>{
               return(
-                  <div className="new-album-item" key={index}>
+                  <div className="new-album-item" key={index} onClick={()=>handleSinger(item.id)}>
                     <div className="box">
-                      <img src={item.picUrl} alt=""/>
+                      <img src={item.picUrl+'?param=130y130'} alt=""/>
                     </div>
-                    {item.id}
+                    {item.name}
                   </div>
               )
             })}
