@@ -1,0 +1,46 @@
+.album-page-wrapper{
+  width: 962px;
+  margin: 20px auto;
+  font-family: poppin,Tahoma,Arial,\5FAE\8F6F\96C5\9ED1,sans-serif;
+  display: flex;
+  .album-info{
+    flex: 1;
+    .img{
+      width: 80%;
+      margin: 5% 10%;
+    }
+    .name{
+      padding: 0 20%;
+    }
+    .info{
+      padding: 0 10%;
+    }
+  }
+  .album-playlist{
+    width: 650px;
+    .playlist{
+      width: 100%;
+      margin: auto;
+      padding: 15px;
+      .playlist-item{
+        line-height: 40px;
+        display: flex;
+        border-bottom: 1px solid #eee;
+        .no{
+          width: 50px;
+          text-align: center;
+        }
+        .name{
+          width: 400px;
+        }
+        .singer{
+          width: 100px;
+        }
+        .play{
+          flex: 1;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

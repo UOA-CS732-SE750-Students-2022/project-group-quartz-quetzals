@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import "./assets/icon/iconfont.css"
-import {BrowserRouter as Router, Routes, Route, Link, BrowserRouter} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 
 ReactDOM.render(
   <BrowserRouter>

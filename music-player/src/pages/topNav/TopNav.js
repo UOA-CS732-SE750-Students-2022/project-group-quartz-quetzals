@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import "./TopNav.scss"
 import {Button,Input} from 'antd';
-import {useNavigate, useLocation} from "react-router-dom";
+import {useNavigate, useLocation, Link} from "react-router-dom";
 // import {getTopBanners} from "../common/service";
 function TopNav(){
   const [navList] = useState([
@@ -17,7 +17,9 @@ function TopNav(){
   const routeMap = {
     0: '/',
     1: '/my_music',
-    2: '/forum'
+    2: '/forum',
+
+    9: '/rank1'
   }
   const onNavClick = (index) => {
     navigate(routeMap[index])
@@ -57,7 +59,7 @@ function TopNav(){
         </div>
         <div className="sub-nav-container">
           <div className="sub-item">New!</div>
-          <div className="sub-item">UK</div>
+          <div className="sub-item"><Link to="/rank1" style={{color:'#fff'}}>UK</Link></div>
           <div className="sub-item">Billboard</div>
           <div className="sub-item">Beatport</div>
         </div>

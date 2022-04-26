@@ -3,7 +3,7 @@ import axios from "axios";
 
 const instance = axios.create({
   baseURL: "https://netease-cloud-music-bn6p2obor-adamliu327.vercel.app",
-  timeout: 5000,
+  timeout: 100000,
 });
 
 instance.interceptors.request.use(
