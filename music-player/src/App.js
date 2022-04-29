@@ -8,6 +8,7 @@ import store from './store'
 import {Routes,Route} from "react-router-dom";
 import RankList1 from "./topPage/rank1";
 import AlbumPage from "./pages/albumPage/AlbumPage";
+import RoomPage from './pages/room/roomPage';
 // import {Route,Redirect,Switch} from 'react-router-dom'
 import TopNav from "./pages/topNav/TopNav";
 
@@ -19,6 +20,7 @@ function App() {
           <Route path='/' exact element={<Page1/>}/>
           <Route path='/my_music' exact element={<Page2/>}/>
           <Route path='/forum' exact element={<Page3/>}/>
+          <Route path='/room' exact element={<RoomPage/>}/>
           <Route path='/rank1' exact element={<RankList1/>}/>
           <Route path='/user/:id' exact element={<AlbumPage/>}/>
         </Routes>
