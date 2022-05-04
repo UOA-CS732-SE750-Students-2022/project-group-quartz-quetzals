@@ -8,10 +8,10 @@ import { FastBackwardOutlined, PlayCircleOutlined, FastForwardOutlined} from '@a
 function RoomContent(){
     const { Sider, Content } = Layout;
     const songList = [
-        {name:'tgsrg rfgsrt',name1:"rgrhbajbhawrhbg",img:img5},
-        {name:'stgs sthtrj',name1:"hsrthstg",img:img5},
-        {name:'yjdy sthrtwjy',name1:"strraehhg",img:img5},
-        {name:'dryjh srthyrjj',name1:"hrtydysrhaeth",img:img5}
+        {song:'tgsrg rfgsrt',singer:"rgrhbajbhawrhbg",img:img5},
+        {song:'stgs sthtrj',singer:"hsrthstg",img:img5},
+        {song:'yjdy sthrtwjy',singer:"strraehhg",img:img5},
+        {song:'dryjh srthyrjj',singer:"hrtydysrhaeth",img:img5}
     ]
     const joinedUsers = [
         { title: 'fjhagbgarg'},
@@ -72,7 +72,7 @@ function RoomContent(){
                                     <List.Item className='playlist-item'>
                                         <List.Item.Meta
                                         avatar={<img className='song-img' src={item.img} alt="" />}
-                                        title={<a>{item.name} - {item.name1}</a>}
+                                        title={<a>{item.song} - {item.singer}</a>}
                                         />
                                     </List.Item>
                                 )}

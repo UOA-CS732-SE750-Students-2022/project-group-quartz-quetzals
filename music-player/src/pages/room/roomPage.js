@@ -1,12 +1,10 @@
 import React from 'react';
-import Footer from "../footer/Footer";
 import RoomContent from "./roomContent/roomContent";
 
 function RoomPage(){
     return (
-        <div>
+        <div className="room-page">
             <RoomContent/>
-            <Footer/>
         </div>
     );
 }

@@ -8,7 +8,7 @@ function TopNav(){
     {title:'Discover', path: '/'},
     {title:'My Music', path: '/my_music'},
     {title:'Forum',path: '/forum'},
-    {title:'Radio',path: '/radio'},
+    {title:'Radio',path: '/room'},
   ])
   const navigate = useNavigate();
   const [isNav,setNav] = useState(0)
@@ -18,7 +18,7 @@ function TopNav(){
     0: '/',
     1: '/my_music',
     2: '/forum',
-
+    3:'/room',
     9: '/rank1'
   }
   const onNavClick = (index) => {
