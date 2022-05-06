@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import "./TopNav.scss"
 import {Button,Input} from 'antd';
 import {useNavigate, useLocation, Link} from "react-router-dom";
+import SearchBar from '../../components/searchBar/SearchBar'
 // import {getTopBanners} from "../common/service";
 function TopNav(){
   const [navList] = useState([
@@ -55,9 +56,10 @@ function TopNav(){
               })}
           </div>
           <div className="search-box">
-            <Input placeholder="Basic usage"/>
+            {/*<Input placeholder="Basic usage"/>*/}
+            <SearchBar placeholder="basic usage"/>
           </div>
-          <Button type="primary">Search</Button>
+          {/*<Button type="primary">Search</Button>*/}
         </div>
         <div className="sub-nav-container">
           <div className="sub-item">New!</div>
