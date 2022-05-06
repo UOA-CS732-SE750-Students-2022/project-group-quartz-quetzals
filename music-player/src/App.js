@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Page1 from './topPage/page1'
 import Page2 from './topPage/page2'
 import Page3 from './topPage/page3'
 import {Provider} from 'react-redux'
 import store from './store'
-import {Routes,Route} from "react-router-dom";
+import {Routes, Route, useLocation} from "react-router-dom";
 import RankList1 from "./topPage/rank1";
 import AlbumPage from "./pages/albumPage/AlbumPage";
 import RoomPage from './pages/room/roomPage';
 // import {Route,Redirect,Switch} from 'react-router-dom'
 import TopNav from "./pages/topNav/TopNav";
+import Player from './components/player/Player'
+import RankDetail from "./topPage/rankDetail";
 
 function App() {
   return (
@@ -23,7 +25,10 @@ function App() {
           <Route path='/room' exact element={<RoomPage/>}/>
           <Route path='/rank1' exact element={<RankList1/>}/>
           <Route path='/user/:id' exact element={<AlbumPage/>}/>
+
+          <Route path='/rankdetail/:typeid' exact element={<RankDetail/>}/>
         </Routes>
+        <Player/>
         {/*<Switch>*/}
         {/*  <Route path='/'  component={<Page1/>}*/}
         {/*  <Route path="/findScore" component={Message}/>*/}

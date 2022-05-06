@@ -1,10 +1,13 @@
 
 import {Carousel} from 'antd'
 import './CarouselBar.scss'
+import banner1 from '../../assets/image/banner1.svg'
+import banner2 from '../../assets/image/banner1.svg'
 
 function CarouselBar(props){
   const contentStyle = {
     height: '285px',
+    width:'100%',
     color: '#fff',
     lineHeight: '285px',
     textAlign: 'center',
@@ -14,10 +17,10 @@ function CarouselBar(props){
       <div className="carousel-bar-wrapper">
         <Carousel autoplay>
           <div>
-            <h3 style={contentStyle}>1</h3>
+            <img src={banner1} style={contentStyle} alt=""/>
           </div>
           <div>
-            <h3 style={contentStyle}>2</h3>
+            <img src={banner2} style={contentStyle} alt=""/>
           </div>
           <div>
             <h3 style={contentStyle}>3</h3>
