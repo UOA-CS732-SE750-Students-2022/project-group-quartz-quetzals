@@ -50,7 +50,8 @@ class AntSearchBar extends React.Component {
     handleChange = value => {
         this.setState({ value });
         // 加你想要的操作
-        window.location.replace(value);
+
+        // window.location.replace(value);
         this.setState({value: ""})
     };
 
