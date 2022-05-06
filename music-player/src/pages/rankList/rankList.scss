@@ -1,0 +1,95 @@
+
+.main-content-wrapper{
+  width: 962px;
+  margin: auto;
+      .list{
+        flex: 1;
+        border: 1px solid rgba(0,0,0,0.2);
+        border-right: none;
+        .title-box{
+          height: 120px;
+          width: 100%;
+          background: #eee;
+          padding:20px;
+          display: flex;
+          .title-img{
+            width: 80px;
+            height: 80px;
+            background: yellowgreen;
+          }
+          .title-name{
+            flex: 1;
+            padding: 5px;
+            .play-icon{
+              color: #999;
+              cursor: pointer;
+              padding-left: 1px;
+              padding-right: 5px;
+            }
+            .play-icon:hover{
+              color: #333333;
+            }
+          }
+        }
+        .more{
+          line-height: 32px;
+          background: rgba(0,0,0,0.1);
+          text-align: right;
+          padding:0 20px;
+          cursor: pointer;
+        }
+        .more:hover{
+          text-decoration: underline;
+        }
+        .rank-list-box{
+          width: 100%;
+          .rank-item{
+            line-height: 32px;
+            background: rgba(0,0,0,0.1);
+            padding:0 5px;
+            display: flex;
+            .rank{
+              width: 32px;
+              text-align: center;
+            }
+            .song{
+              width: 188px;
+              cursor: pointer;
+              font-size: 12px;
+              overflow:hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              margin-right: auto;
+            }
+            .song:hover{
+              text-decoration: underline;
+            }
+            .icon{
+              width: 50px;
+              display: none;
+              div{
+                flex: 1;
+                color: #999;
+              }
+              div:hover{
+                color:#333333;
+              }
+            }
+          }
+          .rank-item:nth-child(1),.rank-item:nth-child(2),.rank-item:nth-child(3){
+            .rank{
+              color: #C20C0C;
+            }
+          }
+          .rank-item:nth-child(2n){
+            background: #eee;
+          }
+          .rank-item:hover .icon{
+            display: flex;
+          }
+          .rank-item:hover .song{
+            width: 120px;
+          }
+        }
+      }
+}
