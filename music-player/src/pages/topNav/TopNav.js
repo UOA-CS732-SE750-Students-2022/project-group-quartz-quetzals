@@ -57,7 +57,7 @@ function TopNav(){
           </div>
           <div className="search-box">
             {/*<Input placeholder="Basic usage"/>*/}
-            <SearchBar placeholder="basic usage"/>
+            <SearchBar placeholder="Enter the song name..." style={{ width: 300 }}/>
           </div>
           {/*<Button type="primary">Search</Button>*/}
         </div>
