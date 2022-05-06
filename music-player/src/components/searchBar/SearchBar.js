@@ -17,7 +17,7 @@ function SearchBar({placeholder}) {
             // If searchWord is empty don't show result.
             setFilteredData([]);
         } else {
-            const response = axios.get('/search', {
+            const response = axios.get('https://netease-cloud-music-bn6p2obor-adamliu327.vercel.app/search', {
                 params: {
                     keywords: input,
                 }
@@ -53,12 +53,12 @@ function SearchBar({placeholder}) {
                     {filteredData.map((value, key) => {
                         return (
                             <a className="dataItem" href={"https://music.163.com/#/song?id=" + value.id} key={key}>
-                                <p> {value.name} </p>
-                                <p> {value.artists.map((value, key) => [
+                                <div className="singer-name"> {value.name} </div>
+                                <div className="song-name"> {value.artists.map((value, key) => [
                                     key > 0 && ", ",
                                     value.name
-                                ])} </p>
-                                <p> {value.album.name} </p>
+                                ])} </div>
+                                <div className="album-name"> {value.album.name} </div>
                             </a>
                         );
                     })
