@@ -4,6 +4,7 @@ import CarouselBar from "../pages/carouselBar/CarouselBar";
 import Footer from "../pages/footer/Footer";
 
 
+
 function Page1(){
     return(
         <div>
