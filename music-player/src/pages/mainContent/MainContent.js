@@ -116,7 +116,7 @@ function MainContent(){
                     return(
                         <div className="rank-item" key={index}>
                           <div className="rank">{index+1}</div>
-                          <div className="song">{item.name}</div>
+                          <div className="song" onClick={()=>playSong(item.id)}>{item.name}</div>
                           <div className="icon iconfont">
                             <div onClick={()=>playSong(item.id)}>&#xe624;</div>
                             <div onClick={()=>addSong(item.id)}>&#xe600;</div>
@@ -147,7 +147,7 @@ function MainContent(){
                     return(
                         <div className="rank-item" key={index}>
                           <div className="rank">{index+1}</div>
-                          <div className="song">{item.name}</div>
+                          <div className="song" onClick={()=>playSong(item.id)}>{item.name}</div>
                           <div className="icon iconfont">
                             <div onClick={()=>playSong(item.id)}>&#xe624;</div>
                             <div onClick={()=>addSong(item.id)}>&#xe600;</div>
@@ -178,7 +178,7 @@ function MainContent(){
                     return(
                         <div className="rank-item" key={index}>
                           <div className="rank">{index+1}</div>
-                          <div className="song">{item.name}</div>
+                          <div className="song" onClick={()=>playSong(item.id)}>{item.name}</div>
                           <div className="icon iconfont">
                             <div onClick={()=>playSong(item.id)}>&#xe624;</div>
                             <div onClick={()=>addSong(item.id)}>&#xe600;</div>
