@@ -3,6 +3,9 @@ import React from 'react';
 import {getRankingList} from "../../common/service/ranking";
 import {useEffect, useState} from "react";
 import SideBar from "../sideBar/SideBar";
+import {useDispatch} from "react-redux";
+import {getSongPlay, getSongUrl} from "../../common/service/album";
+import {changeSongListAction, changeSongListNextAction} from "../mainContent/store/actionCreator";
 
 function RankList(prop){
     let typeid  = prop.typeid;
@@ -11,6 +14,23 @@ function RankList(prop){
       let _rank = await getRankingList(typeid)
       console.log(_rank)
       setRank(_rank && _rank.playlist.tracks)
+    }
+
+  let dispatch;
+  dispatch = useDispatch();
+    async function playSong(id){
+      const res = await getSongPlay(id)
+      const {name} = res.songs[0]
+      const {picUrl} = res.songs[0].al
+      const url = await getSongUrl(id)
+      dispatch(changeSongListAction({...url.data[0],name,picUrl}))
+    }
+    async function addSong(id){
+      const res = await getSongPlay(id)
+      const {name} = res.songs[0]
+      const {picUrl} = res.songs[0].al
+      const url = await getSongUrl(id)
+      dispatch(changeSongListNextAction({...url.data[0],name,picUrl}))
     }
     useEffect(()=>{
       getData();
@@ -34,10 +54,10 @@ function RankList(prop){
                   return(
                       <div className="rank-item" key={index}>
                         <div className="rank">{index+1}</div>
-                        <div className="song">{item.name}</div>
+                        <div className="song" onClick={()=>playSong(item.id)}>{item.name}</div>
                         <div className="icon iconfont">
-                          <div>&#xe624;</div>
-                          <div>&#xe600;</div>
+                          <div onClick={()=>playSong(item.id)}>&#xe624;</div>
+                          <div onClick={()=>addSong(item.id)}>&#xe600;</div>
                         </div>
                       </div>
                   )
