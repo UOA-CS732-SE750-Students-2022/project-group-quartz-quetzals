@@ -1,5 +1,3 @@
-export const CHANGE_ALBUM_LIST = "mainContent/CHANGE_ALBUM_LIST";
-export const CHANGE_ARTIST_LIST = "mainContent/CHANGE_ARTIST_LIST";
-export const CHANGE_RANKING_LIST1 = "mainContent/CHANGE_RANKING_LIST1";
-export const CHANGE_RANKING_LIST2 = "mainContent/CHANGE_RANKING_LIST2";
-export const CHANGE_RANKING_LIST3 = "mainContent/CHANGE_RANKING_LIST3";
+export const CHANGE_SONG_LIST = "mainContent/CHANGE_SONG_LIST";
+export const CHANGE_SONG_LIST_NEXT = "mainContent/CHANGE_SONG_LIST_NEXT";
+export const CHANGE_SONG_LIST_PREV = "mainContent/CHANGE_SONG_LIST_PREV";

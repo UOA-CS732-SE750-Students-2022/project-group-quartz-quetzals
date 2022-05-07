@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import "./TopNav.scss"
 import {Button,Input} from 'antd';
 import {useNavigate, useLocation, Link} from "react-router-dom";
+import SearchBar from '../../components/searchBar/SearchBar'
 // import {getTopBanners} from "../common/service";
 function TopNav(){
   const [navList] = useState([
@@ -19,7 +20,9 @@ function TopNav(){
     1: '/my_music',
     2: '/forum',
     3:'/room',
-    9: '/rank1'
+    8:'/rankDetail/180106',
+    9: '/rankDetail/60198',
+    10:'/rankDetail/3812895'
   }
   const onNavClick = (index) => {
     navigate(routeMap[index])
@@ -53,15 +56,16 @@ function TopNav(){
               })}
           </div>
           <div className="search-box">
-            <Input placeholder="Basic usage"/>
+            {/*<Input placeholder="Basic usage"/>*/}
+            <SearchBar placeholder="Enter the song name..." style={{ width: 300 }}/>
           </div>
-          <Button type="primary">Search</Button>
+          {/*<Button type="primary">Search</Button>*/}
         </div>
         <div className="sub-nav-container">
           <div className="sub-item">New!</div>
-          <div className="sub-item"><Link to="/rank1" style={{color:'#fff'}}>UK</Link></div>
-          <div className="sub-item">Billboard</div>
-          <div className="sub-item">Beatport</div>
+          <div className="sub-item"><Link to="/rankDetail/180106" style={{color:'#fff'}}>UK</Link></div>
+          <div className="sub-item"><Link to="/rankDetail/60198" style={{color:'#fff'}}>Billboard</Link></div>
+          <div className="sub-item"><Link to="/rankDetail/3812895" style={{color:'#fff'}}>Beatport</Link></div>
         </div>
       </div>
   )

@@ -4,9 +4,11 @@ import SideBar from "../sideBar/SideBar";
 import {useEffect, useState} from "react";
 
 import {getArtistList} from "../../common/service/artist";
-import {getAlbumList} from "../../common/service/album";
+import {getAlbumList, getSongPlay, getSongUrl} from "../../common/service/album";
 import {getRankingList} from "../../common/service/ranking";
 import {useNavigate} from "react-router-dom";
+import {changeSongListAction, changeSongListNextAction} from "./store/actionCreator";
+import {useDispatch} from "react-redux";
 
 
 function MainContent(){
@@ -51,6 +53,21 @@ function MainContent(){
     {name:'Female Singer',type: 2,to:''},
     {name:'Band',type: 3, to:''},
   ]
+  const dispatch = useDispatch()
+  async function playSong(id){
+    const res = await getSongPlay(id)
+    const {name} = res.songs[0]
+    const {picUrl} = res.songs[0].al
+    const url = await getSongUrl(id)
+    dispatch(changeSongListAction({...url.data[0],name,picUrl}))
+  }
+  async function addSong(id){
+    const res = await getSongPlay(id)
+    const {name} = res.songs[0]
+    const {picUrl} = res.songs[0].al
+    const url = await getSongUrl(id)
+    dispatch(changeSongListNextAction({...url.data[0],name,picUrl}))
+  }
   return(
       <div>
         {<div className="main-content-wrapper">
@@ -99,16 +116,20 @@ function MainContent(){
                     return(
                         <div className="rank-item" key={index}>
                           <div className="rank">{index+1}</div>
-                          <div className="song">{item.name}</div>
+                          <div className="song" onClick={()=>playSong(item.id)}>{item.name}</div>
                           <div className="icon iconfont">
-                            <div>&#xe624;</div>
-                            <div>&#xe600;</div>
+                            <div onClick={()=>playSong(item.id)}>&#xe624;</div>
+                            <div onClick={()=>addSong(item.id)}>&#xe600;</div>
                           </div>
                         </div>
                     )
                   })}
                 </div>
-                <div className="more">More></div>
+                <div className="more"
+                     onClick={()=>{
+                       navigate("/rankDetail/180106")
+                     }}
+                >More></div>
               </div>
               <div className="list">
                 <div className="title-box">
@@ -126,16 +147,20 @@ function MainContent(){
                     return(
                         <div className="rank-item" key={index}>
                           <div className="rank">{index+1}</div>
-                          <div className="song">{item.name}</div>
+                          <div className="song" onClick={()=>playSong(item.id)}>{item.name}</div>
                           <div className="icon iconfont">
-                            <div>&#xe624;</div>
-                            <div>&#xe600;</div>
+                            <div onClick={()=>playSong(item.id)}>&#xe624;</div>
+                            <div onClick={()=>addSong(item.id)}>&#xe600;</div>
                           </div>
                         </div>
                     )
                   })}
                 </div>
-                <div className="more">More></div>
+                <div className="more"
+                     onClick={()=>{
+                       navigate("/rankDetail/60198")
+                     }}
+                >More></div>
               </div>
               <div className="list">
                 <div className="title-box">
@@ -153,16 +178,20 @@ function MainContent(){
                     return(
                         <div className="rank-item" key={index}>
                           <div className="rank">{index+1}</div>
-                          <div className="song">{item.name}</div>
+                          <div className="song" onClick={()=>playSong(item.id)}>{item.name}</div>
                           <div className="icon iconfont">
-                            <div>&#xe624;</div>
-                            <div>&#xe600;</div>
+                            <div onClick={()=>playSong(item.id)}>&#xe624;</div>
+                            <div onClick={()=>addSong(item.id)}>&#xe600;</div>
                           </div>
                         </div>
                     )
                   })}
                 </div>
-                <div className="more">More></div>
+                <div className="more"
+                     onClick={()=>{
+                       navigate("/rankDetail/3812895")
+                     }}
+                >More></div>
               </div>
             </div>
           </div>
