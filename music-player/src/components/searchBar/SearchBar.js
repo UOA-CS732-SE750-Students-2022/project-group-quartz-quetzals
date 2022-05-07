@@ -21,6 +21,7 @@ export default function SearchBar(info) {
         }
 
         function getValue() {
+            // Get search result from netease search API.
             axios.get('https://netease-cloud-music-bn6p2obor-adamliu327.vercel.app/search', {
                 params: {
                     keywords: value,
@@ -31,25 +32,31 @@ export default function SearchBar(info) {
                     // Songs found
                     data = response.data.result.songs;
                 } else {
+                    // If no song found set result to empty array.
                     data = [];
                 }
+                // Set result.
                 setData(data);
             });
         }
+        // Debounce
         timeout = setTimeout(getValue, 300);
     }
 
     function handleSearch(value) {
         setValue(value);
         if (value) {
+            // If entered value is not empty, search for result.
             handleFilter(value, data => this.setState({ data }));
         } else {
+            // No entered value so result set empty.
             setData([]);
         }
     }
 
 
     async function handleChange (value) {
+        // Push selected songs into top of playlist.
         const res = await getSongPlay(value)
         const {name} = res.songs[0]
         const {picUrl} = res.songs[0].al
