@@ -145,22 +145,26 @@ const formateDate = function (date){
   }
   return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate())+" " +
         date.getHours() +":" + date.getMinutes()+":"+date.getSeconds();
-;
 }
 
 function Forum(props){
   const {} = props
+  let lcomments = localStorage.getItem("comments");
+  if(lcomments){
+    commentsData =JSON.parse(lcomments);
+  }
   const [comments,setComments] = useState(commentsData)
+
   const [commentRefs,setCommentRefs] = useState({})
 
   function answerComment(commentId,commentId2,message){
       console.log(commentId,commentId2,message);
       for(let i = 0 ; i < comments.length ; i ++){
-        if(comments[i].id === commentId){
+        if(comments[i].id == commentId){
           console.log(comments[i])
           if( comments[i].commentList){
             for(let j = 0 ; j < comments[i].commentList.length ; j ++){
-                if(comments[i].commentList[j].id === commentId2){
+                if(comments[i].commentList[j].id == commentId2){
                   console.log(comments[i].commentList[j])
                   if(!comments[i].commentList[j].answerList){
                     comments[i].commentList[j].answerList = [];
@@ -172,8 +176,11 @@ function Forum(props){
                     user:currentUser
                   })
                   setComments(JSON.parse(JSON.stringify(comments)));
+                  localStorage.setItem("comments",JSON.stringify(comments))
                   setTimeout(function(){
                     document.querySelector('#id'+commentId+commentId2).value= "";
+                    commentRefs["_dt"+commentId2+"input"].resizableTextArea.textArea.value = "";
+                    setCommentRefs(commentRefs)
                   },500)
                   commentRefs["_dt"+commentId2+"toggle"] = 0;
                   commentRefs["docomment"+commentId2].style.display="none";
@@ -186,7 +193,7 @@ function Forum(props){
 
   function answerComment0(commentId,message){
     for(let i = 0 ; i < comments.length ; i ++){
-      if(comments[i].id === commentId){
+      if(comments[i].id == commentId){
         if(!comments[i].commentList){
           comments[i].commentList = [];
         }
@@ -197,9 +204,11 @@ function Forum(props){
           user:currentUser
         });
         setComments(JSON.parse(JSON.stringify(comments)));
+        localStorage.setItem("comments",JSON.stringify(comments))
         setTimeout(function(){
           document.querySelector('#id'+commentId+"_input").value= "";
-
+          commentRefs["o_dt"+commentId+"_input"].resizableTextArea.textArea.value = "";
+          setCommentRefs(commentRefs);
         },500)
       }
     }
@@ -207,30 +216,33 @@ function Forum(props){
 
   function addComment(message){
     if(!comments){
-      setComments([]);
+      comments = [];
     }
-    comments.unshift({
+    comments.push({
       id:new Date().getTime(),
       content:message,
       date:formateDate(),
       user:currentUser
     });
     setComments(JSON.parse(JSON.stringify(comments)));
+    localStorage.setItem("comments",JSON.stringify(comments))
     setTimeout(function(){
       document.querySelector("#topInput").value= "";
+      commentRefs["topInput"].resizableTextArea.textArea.value = "";
+      setCommentRefs(commentRefs)
     },500)
   }
 
   function doLike(commentId){
     for(let i = 0 ; i < comments.length ; i ++){
-      if(comments[i].id === commentId){
+      if(comments[i].id == commentId){
         if(!comments[i].likeList){
           comments[i].likeList = [];
         }
         let haveLiked = false;
         let newLikeList = []
         comments[i].likeList.forEach((item,index)=>{
-          if(item.id === currentUser.id){
+          if(item.id == currentUser.id){
             haveLiked = true;
           }else{
             newLikeList.push(item)
@@ -240,6 +252,7 @@ function Forum(props){
           commentRefs["otd"+commentId+"like"].style.color='rgb(255,0,0)';
           comments[i].likeList.push(currentUser)
           setComments(JSON.parse(JSON.stringify(comments)));
+          localStorage.setItem("comments",JSON.stringify(comments))
         }else{
             commentRefs["otd"+commentId+"like"].style.color='#888';
           comments[i].likeList =newLikeList;
@@ -250,7 +263,7 @@ function Forum(props){
   function checkUserLike(userList,currentUser){
     if(userList){
       for(let i = 0 ; i < userList.length; i ++){
-        if(userList[i].id === userList.id){
+        if(userList[i].id == userList.id){
           return true;
         }
       }
@@ -263,10 +276,10 @@ function Forum(props){
         <div className="commentOp">
           <div className="title">
             <div>
-              Coment
+              Comments
             </div>
             <div>
-              Total {comments.length} pls
+              Total {comments.length} comments
             </div>
           </div>
           <Divider style={{margin:"0 0 0.5em 0"}}/>
@@ -278,6 +291,7 @@ function Forum(props){
                  (node)=>{
                    if(node){
                      commentRefs["topInput"] = node;
+                     commentRefs["topInput"].resizableTextArea.textArea.value = "";
                      setCommentRefs(commentRefs)
                    }
                  }
@@ -299,7 +313,17 @@ function Forum(props){
 
         <div className="commentArea">
           {
-            comments?.map((comment,index)=>{
+            comments?.sort((d2,d1)=>{
+              if(new Date(d2.date) > new Date(d1.date)){
+                return -1;
+              }
+              if(new Date(d2.date) == new Date(d1.date)){
+                return 0;
+              }
+              if(new Date(d2.date) > new Date(d1.date)){
+                return 1;
+              }
+            }).map((comment,index)=>{
               let comment1 =comment;
               return (
                   <div key={index} className="itemComment">
@@ -368,7 +392,7 @@ function Forum(props){
                                            }
                                          }
                                          console.log(commentRefs["_docomment"+comment.id+"toggle"])
-                                         if(commentRefs["_dt"+comment.id+"toggle"] ===0){
+                                         if(commentRefs["_dt"+comment.id+"toggle"] ==0){
                                            commentRefs["_dt"+comment.id+"toggle"] =1;
                                             commentRefs["docomment"+comment.id].style.display='flex';
                                          }else{
@@ -463,6 +487,7 @@ function Forum(props){
                         (node)=>{
                           if(node){
                             commentRefs["o_dt"+comment.id+"_input"] = node;
+                            commentRefs["o_dt"+comment.id+"_input"].resizableTextArea.textArea.value=""
                             setCommentRefs(commentRefs)
                           }
                         }
