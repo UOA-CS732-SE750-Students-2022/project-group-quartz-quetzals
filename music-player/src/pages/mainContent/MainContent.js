@@ -22,8 +22,10 @@ function MainContent(){
   const [loading,setLoading] =useState(false)
   const navigate = useNavigate();
   function handleSinger(id){
-    console.log(id)
     navigate('/user/'+id)
+  }
+  function handleSinger1(id){
+    navigate('/singer/'+id)
   }
   function changeTab(index){
     getArtistList(index,6).then((res)=>{
@@ -53,6 +55,7 @@ function MainContent(){
     {name:'Female Singer',type: 2,to:''},
     {name:'Band',type: 3, to:''},
   ]
+
   const dispatch = useDispatch()
   async function playSong(id){
     const res = await getSongPlay(id)
@@ -76,7 +79,7 @@ function MainContent(){
             <div className="recommend-album">
               {artist && artist.map((item,index)=>{
                 return(
-                    <div className="album-box" key={index}>
+                    <div className="album-box" key={index} onClick={()=>handleSinger1(item.id)}>
                       <div className="box">
                         <img src={item.picUrl+'?param=130y130'} alt=""/>
                       </div>
@@ -104,10 +107,10 @@ function MainContent(){
                 <div className="title-box">
                   <div className="title-img"/>
                   <div className="title-name">
-                    UK
+                    -UK-
                     <div className="iconfont">
-                      <span className="play-icon">&#xe624;</span>
-                      <span className="play-icon">&#xe600;</span>
+                      {/*<span className="play-icon">&#xe624;</span>*/}
+                      {/*<span className="play-icon">&#xe600;</span>*/}
                     </div>
                   </div>
                 </div>
@@ -135,10 +138,10 @@ function MainContent(){
                 <div className="title-box">
                   <div className="title-img"/>
                   <div className="title-name">
-                    UK
+                    -Billboard-
                     <div className="iconfont">
-                      <span className="play-icon">&#xe624;</span>
-                      <span className="play-icon">&#xe600;</span>
+                      {/*<span className="play-icon">&#xe624;</span>*/}
+                      {/*<span className="play-icon">&#xe600;</span>*/}
                     </div>
                   </div>
                 </div>
@@ -166,10 +169,10 @@ function MainContent(){
                 <div className="title-box">
                   <div className="title-img"/>
                   <div className="title-name">
-                    UK
+                    -Beatport-
                     <div className="iconfont">
-                      <span className="play-icon">&#xe624;</span>
-                      <span className="play-icon">&#xe600;</span>
+                      {/*<span className="play-icon">&#xe624;</span>*/}
+                      {/*<span className="play-icon">&#xe600;</span>*/}
                     </div>
                   </div>
                 </div>

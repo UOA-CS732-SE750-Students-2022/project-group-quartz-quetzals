@@ -8,13 +8,17 @@ import {getSongPlay, getSongUrl} from "../../common/service/album";
 import {changeSongListAction, changeSongListNextAction} from "../mainContent/store/actionCreator";
 
 function RankList(prop){
-    let typeid  = prop.typeid;
-    const [rank,setRank] = useState([])
-    async function getData(){
-      let _rank = await getRankingList(typeid)
-      console.log(_rank)
-      setRank(_rank && _rank.playlist.tracks)
-    }
+  let typeid  = prop.typeid;
+  const [rank,setRank] = useState([])
+  async function getData(){
+    let _rank = await getRankingList(typeid)
+    setRank(_rank && _rank.playlist.tracks)
+  }
+  const list = {
+    180106:'UK',
+    60198:'Billboard',
+    3812895:'Beatport'
+  }
 
   let dispatch;
   dispatch = useDispatch();
@@ -36,13 +40,14 @@ function RankList(prop){
       getData();
     },[typeid])
 
+
     return(
         <div className="main-content-wrapper">
             <div className="list">
               <div className="title-box">
                 <div className="title-img"/>
                 <div className="title-name">
-                  UK
+                  {list[typeid]}
                   <div className="iconfont">
                     <span className="play-icon">&#xe624;</span>
                     <span className="play-icon">&#xe600;</span>
