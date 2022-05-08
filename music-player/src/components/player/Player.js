@@ -15,6 +15,7 @@ function Player(){
   const [active,setActive] = useState(false)
   const [name,setName] = useState('')
   const [picUrl,setPicUrl] = useState('');
+  const [singer,setSinger] = useState('')
   const audioRef = useRef();
 
   const { songList } = useSelector(
@@ -35,6 +36,8 @@ function Player(){
       audioRef.current.src = songList[0].url
       setName(songList[0].name)
       setPicUrl(songList[0].picUrl)
+      let singer = songList[0].ar.map((value, key) =>  [key > 0 && ", ", value.name] )
+      setSinger(singer)
       if(loading){
         playState()
       }
@@ -76,9 +79,10 @@ function Player(){
       <div className="player" id="player">
         <div id="info" className={[active ? 'info active':'info']}>
           <span className="artist">{name}</span>
-          <div className="progress-bar">
-            <div className="bar"></div>
-          </div>
+          <span>{singer}</span>
+          {/*<div className="progress-bar">*/}
+          {/*  <div className="bar"></div>*/}
+          {/*</div>*/}
         </div>
         <div id="control-panel" className={[active ? 'control-panel active':'control-panel']} >
           <img src={picUrl} className="album-art"></img>

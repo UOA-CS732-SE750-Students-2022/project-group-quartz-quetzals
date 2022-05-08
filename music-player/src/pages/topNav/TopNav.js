@@ -32,9 +32,6 @@ function TopNav(){
   useEffect(() => {
     setPath(pathname)
   }, [pathname])
-  // getTopBanners().then((res)=>{
-  //   console.log(res.banners)
-  // })
   return(
       <div className="top-nav">
         <div className="container">

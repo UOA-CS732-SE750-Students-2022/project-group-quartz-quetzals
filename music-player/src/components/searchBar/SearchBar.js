@@ -58,10 +58,10 @@ export default function SearchBar(info) {
     async function handleChange (value) {
         // Push selected songs into top of playlist.
         const res = await getSongPlay(value)
-        const {name} = res.songs[0]
+        const {name,ar} = res.songs[0]
         const {picUrl} = res.songs[0].al
         const url = await getSongUrl(res.songs[0].id)
-        dispatch(changeSongListAction({...url.data[0],name,picUrl}))
+        dispatch(changeSongListAction({...url.data[0],name,picUrl,ar}))
     }
 
 

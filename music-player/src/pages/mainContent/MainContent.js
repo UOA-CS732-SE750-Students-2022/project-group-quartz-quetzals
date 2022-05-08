@@ -69,22 +69,21 @@ function MainContent(){
       description:
       img,
     });
-  };
-
+  }
   const dispatch = useDispatch()
   async function playSong(id){
     const res = await getSongPlay(id)
-    const {name} = res.songs[0]
+    const {name,ar} = res.songs[0]
     const {picUrl} = res.songs[0].al
     const url = await getSongUrl(id)
-    dispatch(changeSongListAction({...url.data[0],name,picUrl}))
+    dispatch(changeSongListAction({...url.data[0],name,picUrl,ar}))
   }
   async function addSong(id){
     const res = await getSongPlay(id)
-    const {name} = res.songs[0]
+    const {name,ar} = res.songs[0]
     const {picUrl} = res.songs[0].al
     const url = await getSongUrl(id)
-    dispatch(changeSongListNextAction({...url.data[0],name,picUrl}))
+    dispatch(changeSongListNextAction({...url.data[0],name,picUrl,ar}))
     openNotification(name,picUrl)
   }
   return(

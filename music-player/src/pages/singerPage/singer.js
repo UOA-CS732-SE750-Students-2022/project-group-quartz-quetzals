@@ -30,10 +30,10 @@ function Singer(){
   const dispatch = useDispatch()
   async function playMusic(id){
     const res = await getSongPlay(id)
-    const {name} = res.songs[0]
+    const {name,ar} = res.songs[0]
     const {picUrl} = res.songs[0].al
     const url = await getSongUrl(res.songs[0].id)
-    dispatch(changeSongListAction({...url.data[0],name,picUrl}))
+    dispatch(changeSongListAction({...url.data[0],name,picUrl,ar}))
   }
   function getData1(){
     let simi = []
