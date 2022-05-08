@@ -3,7 +3,9 @@
   src: url('//at.alicdn.com/t/font_3344178_i6uahnscpg.woff2?t=1651932048035') format('woff2'),
   url('//at.alicdn.com/t/font_3344178_i6uahnscpg.woff?t=1651932048035') format('woff'),
   url('//at.alicdn.com/t/font_3344178_i6uahnscpg.ttf?t=1651932048035') format('truetype');
+
 }
+
 
 .iconfont {
   font-family: "iconfont" !important;
@@ -11,22 +13,6 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-bofang1:before {
-  content: "\e63d";
-}
-
-.icon-xiayishou:before {
-  content: "\e647";
-}
-
-.icon-24gf-pause2:before {
-  content: "\ea81";
-}
-
-.icon-erji:before {
-  content: "\e66b";
 }
 
 .icon-jia:before {
