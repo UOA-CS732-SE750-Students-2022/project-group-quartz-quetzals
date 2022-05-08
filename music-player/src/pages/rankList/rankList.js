@@ -6,6 +6,7 @@ import SideBar from "../sideBar/SideBar";
 import {useDispatch} from "react-redux";
 import {getSongPlay, getSongUrl} from "../../common/service/album";
 import {changeSongListAction, changeSongListNextAction} from "../mainContent/store/actionCreator";
+import {Avatar, notification} from "antd";
 
 function RankList(prop){
   let typeid  = prop.typeid;
@@ -35,7 +36,21 @@ function RankList(prop){
       const {picUrl} = res.songs[0].al
       const url = await getSongUrl(id)
       dispatch(changeSongListNextAction({...url.data[0],name,picUrl}))
+      openNotification(name,picUrl)
     }
+  const openNotification = (name,picUrl) => {
+    const img = (
+        <div >
+          Name:{name}<br/>
+          <Avatar shape="square" size={64} src={picUrl}/>
+        </div>
+    );
+    notification.open({
+      message: `Add song to playlist`,
+      description:
+      img,
+    });
+  };
     useEffect(()=>{
       getData();
     },[typeid])
@@ -49,8 +64,8 @@ function RankList(prop){
                 <div className="title-name">
                   {list[typeid]}
                   <div className="iconfont">
-                    <span className="play-icon">&#xe624;</span>
-                    <span className="play-icon">&#xe600;</span>
+                    {/*<span className="play-icon">&#xe624;</span>*/}
+                    {/*<span className="play-icon">&#xe600;</span>*/}
                   </div>
                 </div>
               </div>

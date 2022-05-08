@@ -9,6 +9,8 @@ import {getRankingList} from "../../common/service/ranking";
 import {useNavigate} from "react-router-dom";
 import {changeSongListAction, changeSongListNextAction} from "./store/actionCreator";
 import {useDispatch} from "react-redux";
+import {Avatar, notification} from "antd";
+
 
 
 function MainContent(){
@@ -55,6 +57,19 @@ function MainContent(){
     {name:'Female Singer',type: 2,to:''},
     {name:'Band',type: 3, to:''},
   ]
+  const openNotification = (name,picUrl) => {
+    const img = (
+        <div >
+          Name:{name}<br/>
+          <Avatar shape="square" size={64} src={picUrl}/>
+        </div>
+    );
+    notification.open({
+      message: `Add song to playlist`,
+      description:
+      img,
+    });
+  };
 
   const dispatch = useDispatch()
   async function playSong(id){
@@ -70,6 +85,7 @@ function MainContent(){
     const {picUrl} = res.songs[0].al
     const url = await getSongUrl(id)
     dispatch(changeSongListNextAction({...url.data[0],name,picUrl}))
+    openNotification(name,picUrl)
   }
   return(
       <div>

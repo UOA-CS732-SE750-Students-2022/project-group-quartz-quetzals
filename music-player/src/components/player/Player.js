@@ -9,6 +9,7 @@ import {
 
 
 function Player(){
+  const [loading,setLoading]= useState(false)
   const [active,setActive] = useState(false)
   const [name,setName] = useState('')
   const [picUrl,setPicUrl] = useState('');
@@ -21,13 +22,18 @@ function Player(){
       shallowEqual
   );
   useEffect(()=>{
+    setLoading(true)
+  },[loading])
+  useEffect(()=>{
     var audio = document.getElementById("audio")
     audio.loop = true
-    if(songList[0]!==audioRef.current.src){
+    if(songList[0].url!==audioRef.current.src){
       audioRef.current.src = songList[0].url
       setName(songList[0].name)
       setPicUrl(songList[0].picUrl)
-      playState()
+      if(loading){
+        playState()
+      }
     }
     console.log(songList)
   },[songList])
