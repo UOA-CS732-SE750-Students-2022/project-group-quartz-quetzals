@@ -1,7 +1,7 @@
 import "./MainContent.scss"
 import Title from "./components/title/Title";
 import SideBar from "../sideBar/SideBar";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import {getArtistList} from "../../common/service/artist";
 import {getAlbumList, getSongPlay, getSongUrl} from "../../common/service/album";
@@ -10,6 +10,12 @@ import {useNavigate} from "react-router-dom";
 import {changeSongListAction, changeSongListNextAction} from "./store/actionCreator";
 import {useDispatch} from "react-redux";
 import {Avatar, notification} from "antd";
+
+import p_3812895 from "../../assets/rank_pic/3812895.jpg";
+import p_60198 from "../../assets/rank_pic/60198.jpg";
+import p_2809577409 from "../../assets/rank_pic/2809577409.jpg";
+import p_180106 from "../../assets/rank_pic/180106.jpg";
+
 
 
 
@@ -120,7 +126,7 @@ function MainContent(){
             <div className="rank-list">
               <div className="list">
                 <div className="title-box">
-                  <div className="title-img"/>
+                  <div className="title-img"><img width='80' height='80' src={p_180106}/></div>
                   <div className="title-name">
                     -UK-
                     <div className="iconfont">
@@ -151,7 +157,7 @@ function MainContent(){
               </div>
               <div className="list">
                 <div className="title-box">
-                  <div className="title-img"/>
+                  <div className="title-img"><img width='80' height='80' src={p_60198}/></div>
                   <div className="title-name">
                     -Billboard-
                     <div className="iconfont">
@@ -182,7 +188,7 @@ function MainContent(){
               </div>
               <div className="list">
                 <div className="title-box">
-                  <div className="title-img"/>
+                  <div className="title-img"><img width='80' height='80' src={p_3812895}/></div>
                   <div className="title-name">
                     -Beatport-
                     <div className="iconfont">

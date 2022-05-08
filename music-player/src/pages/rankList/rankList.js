@@ -8,6 +8,13 @@ import {getSongPlay, getSongUrl} from "../../common/service/album";
 import {changeSongListAction, changeSongListNextAction} from "../mainContent/store/actionCreator";
 import {Avatar, notification} from "antd";
 
+import img1 from "../../assets/image/1.png";
+import p_3812895 from "../../assets/rank_pic/3812895.jpg";
+import p_60198 from "../../assets/rank_pic/60198.jpg";
+import p_2809577409 from "../../assets/rank_pic/2809577409.jpg";
+import p_180106 from "../../assets/rank_pic/180106.jpg"
+
+
 function RankList(prop){
   let typeid  = prop.typeid;
   const [rank,setRank] = useState([])
@@ -21,6 +28,14 @@ function RankList(prop){
     60198:'Billboard',
     3812895:'Beatport'
   }
+
+  const img = {
+    2809577409:p_2809577409,
+    180106:p_180106,
+    60198:p_60198,
+    3812895:p_3812895
+  }
+
 
   let dispatch;
   dispatch = useDispatch();
@@ -37,12 +52,12 @@ function RankList(prop){
       const {picUrl} = res.songs[0].al
       const url = await getSongUrl(id)
       dispatch(changeSongListNextAction({...url.data[0],name,picUrl,ar}))
-      openNotification(name,picUrl)
+      openNotification(name,picUrl,ar)
     }
-  const openNotification = (name,picUrl) => {
+  const openNotification = (name,picUrl,ar) => {
     const img = (
         <div >
-          Name:{name}<br/>
+          {name} <br/>by {ar.map((value, key) =>  [key > 0 && ", ", value.name])}<br/>
           <Avatar shape="square" size={64} src={picUrl}/>
         </div>
     );
@@ -61,7 +76,8 @@ function RankList(prop){
         <div className="main-content-wrapper">
             <div className="list">
               <div className="title-box">
-                <div className="title-img"/>
+                <div className="title-img"><img width='80' height='80' src={img[typeid]}/></div>
+
                 <div className="title-name">
                   {list[typeid]}
                   <div className="iconfont">
