@@ -16,6 +16,7 @@ function RankList(prop){
     setRank(_rank && _rank.playlist.tracks)
   }
   const list = {
+    2809577409:'New!',
     180106:'UK',
     60198:'Billboard',
     3812895:'Beatport'
@@ -74,8 +75,8 @@ function RankList(prop){
                   return(
                       <div className="rank-item" key={index}>
                         <div className="rank">{index+1}</div>
-                        <div className="song" onClick={()=>playSong(item.id)}>{item.name}</div>
-                        <div className="icon iconfont">
+                        <div className="song1" onClick={()=>playSong(item.id)}>{item.name}</div>
+                        <div className="icon1 iconfont">
                           <div onClick={()=>playSong(item.id)}>&#xe624;</div>
                           <div onClick={()=>addSong(item.id)}>&#xe600;</div>
                         </div>
