@@ -6,7 +6,6 @@ function Page2(){
   return(
     <div>
       <MyMusic/>
-      <Footer/>
     </div>
   );
 }
