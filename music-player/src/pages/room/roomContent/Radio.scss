@@ -1,0 +1,51 @@
+.main-container {
+    text-align: center;
+    color: white;
+    .cover-container {
+        padding-left: 20%;
+        padding-right: 20%;
+        padding-top: 20px;
+        padding-bottom: 100px;
+        background-color: #313131;
+        .cover-img {
+            height: 500px;
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            border-radius: 5%;;
+        }
+        .cover-text {
+            font-size: 15px;
+            margin-top: 10px;
+            margin-bottom: 0px;
+            color: red;
+        }
+        .song-info {
+            font-size: 50px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        .artist-info {
+            font-size: 20px;
+            color: white;
+        }
+        .spinner {
+            color: red;
+            margin-left: 2px;
+        }
+        .button {
+            cursor: pointer;
+            font-size: 25px;
+            margin-right: 4px;
+            margin-top: 4px;
+            color: darkgrey;
+        }
+        .mute-text {
+            cursor: pointer;
+            font-size: 20px;
+            margin-right: 4px;
+            color: darkgrey;
+        }
+    }
+}

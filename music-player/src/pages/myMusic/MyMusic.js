@@ -10,7 +10,7 @@ import {getRankingList} from "../../common/service/ranking";
 import { getSongUrl } from '../../common/service/album';
 
 function MyMusic(){
-    var i = 0;
+    // var i = 0;
     const { Content } = Layout;
     // const songList = [];
     // const songListID = 180106;
@@ -33,33 +33,33 @@ function MyMusic(){
         })
       },[])
     // const curPlaying = getSongUrl(songList[i].id)
-    function changeSong(songID) {
-        // curPlaying = getSongUrl(songID)
-    }
-    function nextSong() {
-        i++
-        // curPlaying = getSongUrl(songList[i].id)
-    }
-    function previousSong() {
-        i--
-        // curPlaying = getSongUrl(songList[i].id)
-    }
-    function play() {
-        //
-    }
+    // function changeSong(songID) {
+    //     curPlaying = getSongUrl(songID)
+    // }
+    // function nextSong() {
+    //     i++
+    //     curPlaying = getSongUrl(songList[i].id)
+    // }
+    // function previousSong() {
+    //     i--
+    //     curPlaying = getSongUrl(songList[i].id)
+    // }
+    // function play() {
+    //     return null
+    // }
     return(
         <div>
-            <Layout>
-                <Content className='play-function-wrapper'>
+            <Layout className='main-wrapper'>
+                {/* <Content className='play-function-wrapper'>
                     <div className='play-function-bar'>
                         <div className='new-album'>
                             <div className='new-album-item'>
                                 <div className='music-content'>
                                     <div className='box'>
-                                        {/* <img src={curPlaying.id} alt=""/> */}
+                                        <img src={curPlaying.id} alt=""/>
                                     </div>
                                     <div className="iconfont">
-                                        {/* <h1>{curPlaying.name}</h1> */}
+                                        <h1>{curPlaying.name}</h1>
                                         <div className='play-button-groups'>
                                             <FastBackwardFilled className='play-button' onClick={previousSong}/>
                                             <CaretRightFilled className='play-button' onClick={play}/>
@@ -70,24 +70,24 @@ function MyMusic(){
                             </div>
                         </div>
                     </div>
+                </Content> */}
+
+                <Content className='playlist-content-container'>
+                    <h1 style={{fontSize:30}}>Favourite</h1>
+                    <p style={{fontSize:15}}>10 songs in your playlist:</p>
+                        <List
+                            itemLayout="horizontal"
+                            dataSource={songList}
+                            renderItem={item => (
+                                <List.Item className='playlist-item'>
+                                    <List.Item.Meta
+                                    avatar={<img className='song-img' src={item.al.picUrl} alt="" />}
+                                    title={<a>{item.name} - {item.ar.map((value, key) => [ key > 0 && ", ", value.name ])}</a>}
+                                    />
+                                </List.Item>
+                            )}
+                        />
                 </Content>
-                <Layout className='content-wrapper'>
-                    <Content className='playlist-content-container'>
-                        <h1>Current Playlist: </h1>
-                          <List
-                                itemLayout="horizontal"
-                                dataSource={songList}
-                                renderItem={item => (
-                                    <List.Item className='playlist-item' onClick={changeSong(item.id)}>
-                                        <List.Item.Meta
-                                        avatar={<img className='song-img' src={item.al.picUrl} alt="" />}
-                                        title={<a>{item.name} - {item.ar.map((value, key) => [ key > 0 && ", ", value.name ])}</a>}
-                                        />
-                                    </List.Item>
-                                )}
-                            />
-                    </Content>
-                </Layout>
             </Layout>
         </div>
     );
