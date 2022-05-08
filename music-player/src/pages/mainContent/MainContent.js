@@ -10,10 +10,13 @@ import {useNavigate} from "react-router-dom";
 import {changeSongListAction, changeSongListNextAction} from "./store/actionCreator";
 import {useDispatch} from "react-redux";
 import {Avatar, notification} from "antd";
+
 import p_3812895 from "../../assets/rank_pic/3812895.jpg";
 import p_60198 from "../../assets/rank_pic/60198.jpg";
 import p_2809577409 from "../../assets/rank_pic/2809577409.jpg";
-import p_180106 from "../../assets/rank_pic/180106.jpg"
+import p_180106 from "../../assets/rank_pic/180106.jpg";
+
+
 
 
 function MainContent(){
