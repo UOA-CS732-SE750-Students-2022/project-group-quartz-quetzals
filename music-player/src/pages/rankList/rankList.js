@@ -7,11 +7,13 @@ import {useDispatch} from "react-redux";
 import {getSongPlay, getSongUrl} from "../../common/service/album";
 import {changeSongListAction, changeSongListNextAction} from "../mainContent/store/actionCreator";
 import {Avatar, notification} from "antd";
+
 import img1 from "../../assets/image/1.png";
 import p_3812895 from "../../assets/rank_pic/3812895.jpg";
 import p_60198 from "../../assets/rank_pic/60198.jpg";
 import p_2809577409 from "../../assets/rank_pic/2809577409.jpg";
 import p_180106 from "../../assets/rank_pic/180106.jpg"
+
 
 function RankList(prop){
   let typeid  = prop.typeid;
@@ -33,6 +35,7 @@ function RankList(prop){
     60198:p_60198,
     3812895:p_3812895
   }
+
 
   let dispatch;
   dispatch = useDispatch();
