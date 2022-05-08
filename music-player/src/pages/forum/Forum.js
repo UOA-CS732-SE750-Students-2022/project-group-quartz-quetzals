@@ -410,7 +410,7 @@ function Forum(props){
 
                                             setCommentRefs(commentRefs)
                                           }
-                                        }} style={{display:"none"}}>回复</span>
+                                        }} style={{display:"none"}}>Reply</span>
                                         <MessageOutlined style={{}}
 
                                         />

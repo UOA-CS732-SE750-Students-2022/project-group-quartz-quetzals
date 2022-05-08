@@ -13,6 +13,7 @@ import RoomPage from './pages/room/roomPage';
 import TopNav from "./pages/topNav/TopNav";
 import Player from './components/player/Player'
 import RankDetail from "./topPage/rankDetail";
+import Singer from "./pages/singerPage/singer";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
           <Route path='/room' exact element={<RoomPage/>}/>
           <Route path='/rank1' exact element={<RankList1/>}/>
           <Route path='/user/:id' exact element={<AlbumPage/>}/>
-
+          <Route path='/singer/:id' exact element={<Singer/>}/>
           <Route path='/rankdetail/:typeid' exact element={<RankDetail/>}/>
         </Routes>
         <Player/>

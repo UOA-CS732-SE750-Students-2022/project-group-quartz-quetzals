@@ -1,7 +1,7 @@
 import "./MainContent.scss"
 import Title from "./components/title/Title";
 import SideBar from "../sideBar/SideBar";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import {getArtistList} from "../../common/service/artist";
 import {getAlbumList, getSongPlay, getSongUrl} from "../../common/service/album";
@@ -9,6 +9,11 @@ import {getRankingList} from "../../common/service/ranking";
 import {useNavigate} from "react-router-dom";
 import {changeSongListAction, changeSongListNextAction} from "./store/actionCreator";
 import {useDispatch} from "react-redux";
+import {Avatar, notification} from "antd";
+import p_3812895 from "../../assets/rank_pic/3812895.jpg";
+import p_60198 from "../../assets/rank_pic/60198.jpg";
+import p_2809577409 from "../../assets/rank_pic/2809577409.jpg";
+import p_180106 from "../../assets/rank_pic/180106.jpg"
 
 
 function MainContent(){
@@ -22,8 +27,10 @@ function MainContent(){
   const [loading,setLoading] =useState(false)
   const navigate = useNavigate();
   function handleSinger(id){
-    console.log(id)
     navigate('/user/'+id)
+  }
+  function handleSinger1(id){
+    navigate('/singer/'+id)
   }
   function changeTab(index){
     getArtistList(index,6).then((res)=>{
@@ -53,20 +60,34 @@ function MainContent(){
     {name:'Female Singer',type: 2,to:''},
     {name:'Band',type: 3, to:''},
   ]
+  const openNotification = (name,picUrl) => {
+    const img = (
+        <div >
+          Name:{name}<br/>
+          <Avatar shape="square" size={64} src={picUrl}/>
+        </div>
+    );
+    notification.open({
+      message: `Add song to playlist`,
+      description:
+      img,
+    });
+  }
   const dispatch = useDispatch()
   async function playSong(id){
     const res = await getSongPlay(id)
-    const {name} = res.songs[0]
+    const {name,ar} = res.songs[0]
     const {picUrl} = res.songs[0].al
     const url = await getSongUrl(id)
-    dispatch(changeSongListAction({...url.data[0],name,picUrl}))
+    dispatch(changeSongListAction({...url.data[0],name,picUrl,ar}))
   }
   async function addSong(id){
     const res = await getSongPlay(id)
-    const {name} = res.songs[0]
+    const {name,ar} = res.songs[0]
     const {picUrl} = res.songs[0].al
     const url = await getSongUrl(id)
-    dispatch(changeSongListNextAction({...url.data[0],name,picUrl}))
+    dispatch(changeSongListNextAction({...url.data[0],name,picUrl,ar}))
+    openNotification(name,picUrl)
   }
   return(
       <div>
@@ -76,7 +97,7 @@ function MainContent(){
             <div className="recommend-album">
               {artist && artist.map((item,index)=>{
                 return(
-                    <div className="album-box" key={index}>
+                    <div className="album-box" key={index} onClick={()=>handleSinger1(item.id)}>
                       <div className="box">
                         <img src={item.picUrl+'?param=130y130'} alt=""/>
                       </div>
@@ -102,12 +123,12 @@ function MainContent(){
             <div className="rank-list">
               <div className="list">
                 <div className="title-box">
-                  <div className="title-img"/>
+                  <div className="title-img"><img width='80' height='80' src={p_180106}/></div>
                   <div className="title-name">
-                    UK
+                    -UK-
                     <div className="iconfont">
-                      <span className="play-icon">&#xe624;</span>
-                      <span className="play-icon">&#xe600;</span>
+                      {/*<span className="play-icon">&#xe624;</span>*/}
+                      {/*<span className="play-icon">&#xe600;</span>*/}
                     </div>
                   </div>
                 </div>
@@ -133,12 +154,12 @@ function MainContent(){
               </div>
               <div className="list">
                 <div className="title-box">
-                  <div className="title-img"/>
+                  <div className="title-img"><img width='80' height='80' src={p_60198}/></div>
                   <div className="title-name">
-                    UK
+                    -Billboard-
                     <div className="iconfont">
-                      <span className="play-icon">&#xe624;</span>
-                      <span className="play-icon">&#xe600;</span>
+                      {/*<span className="play-icon">&#xe624;</span>*/}
+                      {/*<span className="play-icon">&#xe600;</span>*/}
                     </div>
                   </div>
                 </div>
@@ -164,12 +185,12 @@ function MainContent(){
               </div>
               <div className="list">
                 <div className="title-box">
-                  <div className="title-img"/>
+                  <div className="title-img"><img width='80' height='80' src={p_3812895}/></div>
                   <div className="title-name">
-                    UK
+                    -Beatport-
                     <div className="iconfont">
-                      <span className="play-icon">&#xe624;</span>
-                      <span className="play-icon">&#xe600;</span>
+                      {/*<span className="play-icon">&#xe624;</span>*/}
+                      {/*<span className="play-icon">&#xe600;</span>*/}
                     </div>
                   </div>
                 </div>
