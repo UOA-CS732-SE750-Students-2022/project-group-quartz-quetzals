@@ -1,6 +1,9 @@
 import { useReducer, useRef, useEffect, useImperativeHandle, useState } from "react";
 import { forwardRef } from "react";
 import axios from "axios";
+import "./Radio.scss";
+import {Layout} from "antd";
+import {SoundFilled, SoundOutlined} from '@ant-design/icons';
 
 const cookie = `MUSIC_A_T=1650952747956; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/api/clientlog;;MUSIC_A_T=1650952747956; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/api/feedback;;MUSIC_R_T=1650952748082; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/eapi/feedback;;MUSIC_A_T=1650952747956; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/weapi/feedback;;MUSIC_R_T=1650952748082; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/wapi/feedback;;MUSIC_R_T=1650952748082; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/api/feedback;;MUSIC_R_T=1650952748082; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/weapi/feedback;;MUSIC_A_T=1650952747956; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/neapi/feedback;;MUSIC_A_T=1650952747956; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/openapi/clientlog;;MUSIC_A_T=1650952747956; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/wapi/feedback;;MUSIC_U=68879b246ef892676efd49ceb5b473380f50b79ae78fdcd7133ff7c4b1b89eed519e07624a9f005380ecdbe3ebbb91cf3d7f23ebde55f4357f37683f98f232b2b9dca67e059c307b7a561ba977ae766d; Max-Age=1296000; Expires=Wed, 11 May 2022 06:01:43 GMT; Path=/;;MUSIC_A_T=1650952747956; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/neapi/clientlog;;MUSIC_A_T=1650952747956; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/eapi/clientlog;;MUSIC_R_T=1650952748082; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/openapi/clientlog;;MUSIC_SNS=; Max-Age=0; Expires=Tue, 26 Apr 2022 06:01:43 GMT; Path=/;MUSIC_R_T=1650952748082; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/neapi/clientlog;;MUSIC_R_T=1650952748082; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/wapi/clientlog;;MUSIC_R_T=1650952748082; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/eapi/clientlog;;MUSIC_A_T=1650952747956; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/eapi/feedback;;MUSIC_R_T=1650952748082; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/neapi/feedback;;__remember_me=true; Max-Age=1296000; Expires=Wed, 11 May 2022 06:01:43 GMT; Path=/;;MUSIC_R_T=1650952748082; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/api/clientlog;;MUSIC_A_T=1650952747956; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/wapi/clientlog;;MUSIC_R_T=1650952748082; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/weapi/clientlog;;__csrf=e637cd5008c57017112351f558d3af11; Max-Age=1296010; Expires=Wed, 11 May 2022 06:01:53 GMT; Path=/;;MUSIC_A_T=1650952747956; Max-Age=2147483647; Expires=Sun, 14 May 2090 09:15:50 GMT; Path=/weapi/clientlog;`;
 
@@ -28,6 +31,7 @@ async function getMusicUrl(id) {
 
 
 const MyRadio = forwardRef((props, ref) => {
+    const { Content } = Layout;
     const [musicList, setMusicList] = useReducer(musicListReducer, [])
 
     async function setMusic(data) {
@@ -85,18 +89,27 @@ const MyRadio = forwardRef((props, ref) => {
 
     return (
         <div>
-            <img src={musicList[0]?.albumUrl} />
-            <audio style={{display: 'none'}} src={musicList[0]?.url} ref={aRef} autoPlay muted={!playing}></audio>
-            <p>{musicList[0]?.name}</p>
-            <p>
-                {musicList[0]?.artists.map((value, key) => [
-                    key > 0 && ", ",
-                    value
-                ])}
-            </p>
-            <button onClick={switchPlaying}>
-                {playing ? <span>🔈</span> : <span>🔕</span>}
-            </button>
+            <Layout className="main-container">
+                <Content className="cover-container">
+                    <div>
+                        <img className="cover-img" src={musicList[0]?.albumUrl } onerror="this.style.display='none'"/>
+                    </div>
+                    <p className="cover-text">Currently Playing {playing ? '...' : '(muted)'}</p>
+                    <audio style={{display: 'none'}} src={musicList[0]?.url} ref={aRef} autoPlay muted={!playing}></audio>
+                    <p className="song-info">{musicList[0]?.name}</p>
+                    <p className="artist-info">
+                        {musicList[0]?.artists.map((value, key) => [
+                            key > 0 && ", ",
+                            value
+                        ])}
+                    </p>
+                    <p onClick={switchPlaying}>
+                        {playing ? 
+                            <div><SoundFilled className='button'/><span className='mute-text'>Mute</span></div> :
+                            <div><SoundOutlined className='button'/><span className='mute-text'>Unmute</span></div>}
+                    </p>
+                </Content>
+            </Layout>
         </div>
 
     )
