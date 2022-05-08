@@ -62,7 +62,7 @@ function TopNav(){
           {/*<Button type="primary">Search</Button>*/}
         </div>
         <div className="sub-nav-container">
-          <div className="sub-item">New!</div>
+          <div className="sub-item"><Link to="/rankDetail/2809577409" style={{color:'#fff'}}>New!</Link></div>
           <div className="sub-item"><Link to="/rankDetail/180106" style={{color:'#fff'}}>UK</Link></div>
           <div className="sub-item"><Link to="/rankDetail/60198" style={{color:'#fff'}}>Billboard</Link></div>
           <div className="sub-item"><Link to="/rankDetail/3812895" style={{color:'#fff'}}>Beatport</Link></div>

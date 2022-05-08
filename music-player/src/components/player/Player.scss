@@ -31,22 +31,22 @@
       margin-bottom: 8px;
     }
 
-    .progress-bar {
-      background-color: #ddd;
-      height: 2px;
-      width: 100%;
-      position: relative;
-
-      .bar {
-        position:absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        background-color: red;
-        width: 10%;
-        transition: all .2s ease;
-      }
-    }
+    //.progress-bar {
+    //  background-color: #ddd;
+    //  height: 2px;
+    //  width: 100%;
+    //  position: relative;
+    //
+    //  .bar {
+    //    position:absolute;
+    //    left: 0;
+    //    top: 0;
+    //    bottom: 0;
+    //    background-color: red;
+    //    width: 10%;
+    //    transition: all .2s ease;
+    //  }
+    //}
     &.active {
       top: -60px;
       opacity: 1;
