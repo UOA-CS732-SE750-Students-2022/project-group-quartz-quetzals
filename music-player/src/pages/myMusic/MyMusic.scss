@@ -1,0 +1,53 @@
+.my-music-wrapper{
+  min-height: 90vh;
+  background-color: #f0f2f5;
+  padding-bottom: 10vh;
+}
+.main-wrapper {
+  //background-color: black;
+}
+.music-content {
+    color: #333;
+    display: flex;
+    text-align: left;
+    font-family: Circular,spotify-circular,Helvetica,Arial,sans-serif;
+}
+.music-content img {
+    display: block;
+}
+.music-content h1 {
+    font-family: Circular,spotify-circular,Helvetica,Arial,sans-serif;
+    padding-left: 10px;
+}
+.music-content h3 {
+    font-family: Circular,spotify-circular,Helvetica,Arial,sans-serif;
+    padding-left: 10px;
+}
+.music-content p {
+    font-family: Circular,spotify-circular,Helvetica,Arial,sans-serif;
+    padding-left: 10px;
+    margin: 5px;
+}
+.content-wrapper {
+    background-color: white;
+}
+.playlist-content-container {
+    background-color: white;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    border: 1px solid lightgrey;
+    .playlist-item {
+      .song-img {
+        width:50px;
+        height:50px;
+        vertical-align: baseline;
+      }
+    }
+    .playlist-item a {
+      line-height: 50px;
+      font-size: 20px;
+    }
+}

@@ -31,28 +31,29 @@
       margin-bottom: 8px;
     }
 
-    .progress-bar {
-      background-color: #ddd;
-      height: 2px;
-      width: 100%;
-      position: relative;
-
-      .bar {
-        position:absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        background-color: red;
-        width: 10%;
-        transition: all .2s ease;
-      }
-    }
+    //.progress-bar {
+    //  background-color: #ddd;
+    //  height: 2px;
+    //  width: 100%;
+    //  position: relative;
+    //
+    //  .bar {
+    //    position:absolute;
+    //    left: 0;
+    //    top: 0;
+    //    bottom: 0;
+    //    background-color: red;
+    //    width: 10%;
+    //    transition: all .2s ease;
+    //  }
+    //}
     &.active {
       top: -60px;
       opacity: 1;
       transition: all .5s ease;
     }
   }
+
   .control-panel {
     position: relative;
     background-color: #fff;
@@ -73,33 +74,32 @@
       transform: scale(1);
       transition: all .5s ease;
 
-      &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 15px;
-        height: 15px;
-        background-color: #fff;
-        border-radius: 50%;
-        z-index: 5;
-        transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
-      }
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 50%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 80px;
-        background-image: 	url('https://i.scdn.co/image/9dcbd30dbe0c621cbaeae427cf80eff9877b4fcd');
-      }
+    }
+    .album-art::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 15px;
+      height: 15px;
+      background-color: #fff;
+      border-radius: 50%;
+      z-index: 5;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+    }
+    .album-art::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 80px;
+      background-image: 	url('https://i.scdn.co/image/9dcbd30dbe0c621cbaeae427cf80eff9877b4fcd');
     }
 
     &.active .album-art {

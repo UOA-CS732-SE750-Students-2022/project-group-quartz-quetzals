@@ -1,10 +1,12 @@
 import React from 'react';
-import RoomContent from "./roomContent/roomContent";
+import MyRadio from './roomContent/Radio';
+import Footer from '../footer/Footer'
 
 function RoomPage(){
     return (
         <div className="room-page">
-            <RoomContent/>
+            <MyRadio/>
+            <Footer />
         </div>
     );
 }
