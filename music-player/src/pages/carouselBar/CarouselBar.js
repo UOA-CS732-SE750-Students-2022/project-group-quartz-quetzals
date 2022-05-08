@@ -21,13 +21,13 @@ function CarouselBar(){
             <Link to="/rankDetail/180106" style={{color:'#fff'}}><h3 style={contentStyle}>< img style={contentStyle} src={car2} alt=""/></h3></Link>
           </div>
           <div>
-            <Link to="/rankDetail/60198" style={{color:'#fff'}}><h3 style={contentStyle}>< img style={contentStyle} src={car1} alt=""/></h3></Link>
+            <Link to="/rankDetail/180106" style={{color:'#fff'}}><h3 style={contentStyle}>< img style={contentStyle} src={car1} alt=""/></h3></Link>
           </div>
           <div>
             <Link to="/rankDetail/3812895" style={{color:'#fff'}}><h3 style={contentStyle}>< img style={contentStyle} src={car3} alt=""/></h3></Link>
           </div>
           <div>
-            <Link to="/rankDetail/180106" style={{color:'#fff'}}><h3 style={contentStyle}>< img style={contentStyle} src={car4} alt=""/></h3></Link>
+            <Link to="/rankDetail/60198" style={{color:'#fff'}}><h3 style={contentStyle}>< img style={contentStyle} src={car4} alt=""/></h3></Link>
           </div>
         </Carousel>
         {/*<div className="rightBtn" onClick={next}/>*/}
