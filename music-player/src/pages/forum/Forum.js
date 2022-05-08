@@ -160,11 +160,11 @@ function Forum(props){
   function answerComment(commentId,commentId2,message){
       console.log(commentId,commentId2,message);
       for(let i = 0 ; i < comments.length ; i ++){
-        if(comments[i].id == commentId){
+        if(comments[i].id === commentId){
           console.log(comments[i])
           if( comments[i].commentList){
             for(let j = 0 ; j < comments[i].commentList.length ; j ++){
-                if(comments[i].commentList[j].id == commentId2){
+                if(comments[i].commentList[j].id === commentId2){
                   console.log(comments[i].commentList[j])
                   if(!comments[i].commentList[j].answerList){
                     comments[i].commentList[j].answerList = [];
@@ -193,7 +193,7 @@ function Forum(props){
 
   function answerComment0(commentId,message){
     for(let i = 0 ; i < comments.length ; i ++){
-      if(comments[i].id == commentId){
+      if(comments[i].id === commentId){
         if(!comments[i].commentList){
           comments[i].commentList = [];
         }
@@ -235,14 +235,14 @@ function Forum(props){
 
   function doLike(commentId){
     for(let i = 0 ; i < comments.length ; i ++){
-      if(comments[i].id == commentId){
+      if(comments[i].id === commentId){
         if(!comments[i].likeList){
           comments[i].likeList = [];
         }
         let haveLiked = false;
         let newLikeList = []
         comments[i].likeList.forEach((item,index)=>{
-          if(item.id == currentUser.id){
+          if(item.id === currentUser.id){
             haveLiked = true;
           }else{
             newLikeList.push(item)
@@ -263,7 +263,7 @@ function Forum(props){
   function checkUserLike(userList,currentUser){
     if(userList){
       for(let i = 0 ; i < userList.length; i ++){
-        if(userList[i].id == userList.id){
+        if(userList[i].id === userList.id){
           return true;
         }
       }
@@ -317,7 +317,7 @@ function Forum(props){
               if(new Date(d2.date) > new Date(d1.date)){
                 return -1;
               }
-              if(new Date(d2.date) == new Date(d1.date)){
+              if(new Date(d2.date) === new Date(d1.date)){
                 return 0;
               }
               if(new Date(d2.date) > new Date(d1.date)){
@@ -392,7 +392,7 @@ function Forum(props){
                                            }
                                          }
                                          console.log(commentRefs["_docomment"+comment.id+"toggle"])
-                                         if(commentRefs["_dt"+comment.id+"toggle"] ==0){
+                                         if(commentRefs["_dt"+comment.id+"toggle"] ===0){
                                            commentRefs["_dt"+comment.id+"toggle"] =1;
                                             commentRefs["docomment"+comment.id].style.display='flex';
                                          }else{
@@ -410,7 +410,7 @@ function Forum(props){
 
                                             setCommentRefs(commentRefs)
                                           }
-                                        }} style={{display:"none"}}>回复</span>
+                                        }} style={{display:"none"}}>reply</span>
                                         <MessageOutlined style={{}}
 
                                         />
