@@ -64,13 +64,20 @@ const MyRadio = forwardRef((props, ref) => {
     }
 
     return (
-        <button onClick={switchPlaying}>
-            <div>
-                <audio style={{display: 'none'}} src={musicList[0]?.url} ref={audioRef} autoPlay muted={!playing}></audio>
+        <div>
+            <img src={musicList[0]?.albumUrl} />
+            <audio style={{display: 'none'}} src={musicList[0]?.url} ref={audioRef} autoPlay muted={!playing}></audio>
+            <p>{musicList[0]?.name}</p>
+            <p>
+                {musicList[0]?.artists.map((value, key) => [
+                    key > 0 && ", ",
+                    value
+                ])}
+            </p>
+            <button onClick={switchPlaying}>
                 {playing ? <span>🔈</span> : <span>🔕</span>}
-                <span>Now Playing: {musicList[0]?.name}</span>
-            </div>
-        </button>
+            </button>
+        </div>
 
     )
 });

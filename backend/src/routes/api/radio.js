@@ -26,6 +26,8 @@ function getSongs() {
                 url: 'https://netease-cloud-music-api-lime-zeta.vercel.app/song/detail?ids=' + playlistIdList.join(',')
             }).then(function (res) {
                 // Push all songs into playlist.
+                //console.log(res.data.songs[0].fee);
+
                 res.data.songs.map((value) => {
                     pushMusic(value);
                 });
@@ -36,11 +38,21 @@ function getSongs() {
 }
 
 function pushMusic(value) {
-    playList.push({
-        name: value.name,
-        url: 'http://music.163.com/song/media/outer/url?id=' + value.id + ".mp3",
-        duration: Math.round(value.dt / 1000)
-    })
+    const aList = [] // Artist list
+    value.ar.map(function(value) {
+        aList.push(value.name)
+    });
+
+    if (value.fee !== 1) {
+        // Remove VIP only songs.
+        playList.push({
+            name: value.name,
+            artists: aList,
+            url: 'http://music.163.com/song/media/outer/url?id=' + value.id + ".mp3",
+            albumUrl: value.al.picUrl,
+            duration: Math.round(value.dt / 1000)
+        })
+    }
 }
 
 function calculateRadioProcess() {

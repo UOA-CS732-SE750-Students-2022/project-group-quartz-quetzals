@@ -3,7 +3,7 @@ import * as actionTypes from "./constants";
 
 
 const defaultState = Map({
-  songList: [{name: "Lights Still On",picUrl:"http://p2.music.126.net/oQylwqRKWLJ-cPEcrBnRsQ==/109951163302663890.jpg",url:"http://music.163.com/song/media/outer/url?id=562598065.mp3"}],
+  songList: [{name: "STAY",picUrl:"https://p1.music.126.net/e5cvcdgeosDKTDrkTfZXnQ==/109951166155165682.jpg",url:"http://music.163.com/song/media/outer/url?id=562598065.mp3"}],
 });
 
 function reducer(state = defaultState, action) {
