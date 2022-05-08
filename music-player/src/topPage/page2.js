@@ -1,11 +1,12 @@
 import React from 'react';
-
-
+import Footer from "../pages/footer/Footer";
+import MyMusic from "../pages/myMusic/MyMusic";
 
 function Page2(){
   return(
     <div>
-      <p>heeehihibb djkw dekw d</p>
+      <MyMusic/>
+      <Footer/>
     </div>
   );
 }

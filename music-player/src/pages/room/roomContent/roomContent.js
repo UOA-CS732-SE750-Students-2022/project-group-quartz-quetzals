@@ -4,6 +4,7 @@ import "../roomPage.scss";
 import "../../sideBar/SideBar.scss";
 import {Layout, List, Avatar} from 'antd';
 import { FastBackwardOutlined, PlayCircleOutlined, FastForwardOutlined} from '@ant-design/icons';
+import Radio from "./Radio";
 
 function RoomContent(){
     const { Sider, Content } = Layout;
@@ -32,7 +33,7 @@ function RoomContent(){
                                         <img src={img5} alt=""/>
                                     </div>
                                     <div className="iconfont">
-                                        <h1>sbghjbrejgha - iararhjgbr</h1>
+                                        <Radio />
                                         <div className='play-button-groups'>
                                             <FastBackwardOutlined className='play-button'/>
                                             <PlayCircleOutlined className='play-button'/>
