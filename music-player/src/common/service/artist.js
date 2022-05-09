@@ -23,3 +23,10 @@ export function getArtistDescription(id){
     url:`/artist/detail?id=${id}`
   })
 }
+
+export function getArtistFansNumber(id){
+  return request({
+    url:`/artist/follow/count?id=${id}`
+  })
+}
+
