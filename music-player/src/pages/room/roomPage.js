@@ -6,7 +6,6 @@ function RoomPage(){
     return (
         <div className="room-page">
             <MyRadio/>
-            <Footer />
         </div>
     );
 }
