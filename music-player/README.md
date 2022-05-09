@@ -41,8 +41,20 @@ Forum Page:
 Ranking Page:(New!,UK,Billboard,Beatport)
 
 Singer Page:
+1. The singer page gives the information about the singer including name, followers and singer’s picture.
+2. The singer page gives TOP 20 songs for user which allow users to play.
+3. User can click the play button to play songs, and it will add it on the playlist.
+4. The added songs will shown on the MyMusic Page.
+5. The You Might Also Like function allows user to find out more similar singer.
+6. You can click the similar singer to the other singer page.
 
 Album Page:
+1. The Album page gives a list for this album.The album picture are given for users.
+2. User can click the play button to play.
+
+SideBar:
+1. Sidebar showed the latest release album and the singer.
+2. When you click it you can enter the radio page.
 
 Radio Page:
 
