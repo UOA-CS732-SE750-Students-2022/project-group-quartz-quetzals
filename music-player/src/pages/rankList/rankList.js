@@ -6,7 +6,7 @@ import SideBar from "../sideBar/SideBar";
 import {useDispatch} from "react-redux";
 import {getSongPlay, getSongUrl} from "../../common/service/album";
 import {changeSongListAction, changeSongListNextAction} from "../mainContent/store/actionCreator";
-import {Avatar, notification} from "antd";
+import {Avatar, BackTop, notification, Spin} from "antd";
 
 import img1 from "../../assets/image/1.png";
 import p_3812895 from "../../assets/rank_pic/3812895.jpg";
@@ -22,6 +22,7 @@ function RankList(prop){
     let _rank = await getRankingList(typeid)
     setRank(_rank && _rank.playlist.tracks)
   }
+  const [loading,setLoading] = useState(true)
   const list = {
     2809577409:'New!',
     180106:'UK',
@@ -69,10 +70,24 @@ function RankList(prop){
   };
     useEffect(()=>{
       getData();
+      window.scrollTo(0, 0);
     },[typeid])
+  const style = {
+    height: 40,
+    width: 40,
+    lineHeight: '40px',
+    borderRadius: '50%',
+    border: '1px solid #1088e9',
+    color: '#1088e9',
+    backgroundColor:'#fff',
+    textAlign: 'center',
+    fontSize: 14,
+    fontWeight:'bold'
+  };
 
 
     return(
+        <Spin spinning={rank.length===0}>
         <div className="main-content-wrapper">
             <div className="list">
               <div className="title-box">
@@ -104,7 +119,11 @@ function RankList(prop){
             <div className="right-side">
               <SideBar/>
             </div>
+          <BackTop>
+            <div style={style}>UP</div>
+          </BackTop>
         </div>
+        </Spin>
     );
 }
 export default RankList;

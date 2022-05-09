@@ -21,6 +21,10 @@ function reducer(state = defaultState, action) {
       return state.set("songList", [...list,action.res]);
     case actionTypes.CHANGE_SONG_LIST_PREV:
       return state.set("songList", [action.res,...list]);
+    case actionTypes.DELETE_SONG:
+      console.log(action.res)
+      console.log(list.splice(action.res,1))
+      return state.set("songList", [...list]);
     default:
       return state;
   }

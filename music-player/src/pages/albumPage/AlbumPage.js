@@ -10,6 +10,7 @@ import {useDispatch} from "react-redux";
 
 function AlbumPage(){
   // const [id,setId] = useState('')
+  const [loading,setLoading] = useState(true)
   const [music,setMusic] = useState('');
   const [songList,setSongList] = useState([])
   const [albumInfo,setAlbumInfo]= useState({})
@@ -36,6 +37,7 @@ function AlbumPage(){
       setSongList(res&&res.songs)
       setAlbumInfo(res&&res.album)
     })
+    window.scrollTo(0, 0);
   },[id])
 
   return(

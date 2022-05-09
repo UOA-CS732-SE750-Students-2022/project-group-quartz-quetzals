@@ -14,6 +14,38 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+##Music player
+
+###Function
+Navigation Bar:
+1. Jump to the target ranking page.
+2. Search songs and play the selected song.
+
+Music Player:
+1. It will play the song which selected from home page,singer page, album page,search bar and ranking,etc.
+2. User can control it to play or pause,it also has previous song and next song function.
+3. It can display song's name, singer and cover image.
+
+Discover Home Page:
+1. Banner link to target ranking page.
+2. Display popular singers sorted by male, female and band, link to the target singer page.
+3. New albums link to the target album page.
+4. The RankingList on the homepage allow user to play songs and add songs to playlist,when user add music to playlist, it will add at the end of the playlist, so we provide a feedback that will notify the user that they have successfully added the song to the playlist.
+
+My Music Page:
+1. Display the playlist for music player.
+2. Delete songs from playlist.
+
+Forum Page:
+1. 
+Ranking Page:(New!,UK,Billboard,Beatport)
+
+Singer Page:
+
+Album Page:
+
+Radio Page:
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
