@@ -14,7 +14,7 @@
 
     float:left;
     .singer_image{
-      width: 120px;
+      width: 250px;
       height: 120px;
 
       margin-left: 20px;
@@ -22,6 +22,17 @@
       img{
         width: 250px;
         height: 250px;
+      }
+      .singer_fans{
+        text-align: center;
+        font-style: italic;
+        margin-top: 13px;
+        img{
+          width:16px;
+          height:16px;
+          margin-right: 4px;
+
+        }
       }
     }
     .singer_name{

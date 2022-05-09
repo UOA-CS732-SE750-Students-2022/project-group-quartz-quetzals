@@ -52,12 +52,12 @@ function RankList(prop){
       const {picUrl} = res.songs[0].al
       const url = await getSongUrl(id)
       dispatch(changeSongListNextAction({...url.data[0],name,picUrl,ar}))
-      openNotification(name,picUrl)
+      openNotification(name,picUrl,ar)
     }
-  const openNotification = (name,picUrl) => {
+  const openNotification = (name,picUrl,ar) => {
     const img = (
         <div >
-          Name:{name}<br/>
+          {name} <br/>by {ar.map((value, key) =>  [key > 0 && ", ", value.name])}<br/>
           <Avatar shape="square" size={64} src={picUrl}/>
         </div>
     );
