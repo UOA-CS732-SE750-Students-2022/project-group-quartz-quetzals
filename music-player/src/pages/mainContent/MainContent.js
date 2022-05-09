@@ -113,11 +113,11 @@ function MainContent(){
     width: 40,
     lineHeight: '40px',
     borderRadius: '50%',
-    border: '1px solid #1088e9',
-    color: '#1088e9',
+    border: '1px solid #666',
+    color: '#666',
     backgroundColor:'#fff',
     textAlign: 'center',
-    fontSize: 14,
+    fontSize: 30,
     fontWeight:'bold'
   };
   return(
@@ -130,7 +130,7 @@ function MainContent(){
                    more={true}
                    moreFunction={moreSinger}
             />
-            <Spin spinning={loading}>
+            <Spin spinning={loading || artist.length===0}>
             <div className="recommend-album">
               {artist && artist.slice(num-6,num).map((item,index)=>{
                 return(
@@ -145,6 +145,7 @@ function MainContent(){
             </div>
             </Spin>
             <Title title="New Album"/>
+            <Spin spinning={album.length===0}>
             <div className="new-album">
               {album && album.map((item,index)=>{
                 return(
@@ -157,11 +158,12 @@ function MainContent(){
                 )
               })}
             </div>
+            </Spin>
             <Title title="Ranking" moreLink="/rankDetail/2809577409"/>
             <div className="rank-list">
               <div className="list">
                 <div className="title-box">
-                  <div className="title-img"><img width='80' height='80' src={p_180106}/></div>
+                  <div className="title-img"><img width='80' height='80' src={p_180106} alt=""/></div>
                   <div className="title-name">
                     -UK-
                     <div className="iconfont">
@@ -194,7 +196,7 @@ function MainContent(){
               </div>
               <div className="list">
                 <div className="title-box">
-                  <div className="title-img"><img width='80' height='80' src={p_60198}/></div>
+                  <div className="title-img"><img width='80' height='80' src={p_60198} alt=""/></div>
                   <div className="title-name">
                     -Billboard-
                     <div className="iconfont">
@@ -227,7 +229,7 @@ function MainContent(){
               </div>
               <div className="list">
                 <div className="title-box">
-                  <div className="title-img"><img width='80' height='80' src={p_3812895}/></div>
+                  <div className="title-img"><img width='80' height='80' src={p_3812895} alt=""/></div>
                   <div className="title-name">
                     -Beatport-
                     <div className="iconfont">
@@ -265,7 +267,7 @@ function MainContent(){
           </div>
         </div>}
         <BackTop>
-          <div style={style}>UP</div>
+          <div className="iconfont" style={style}>&#xe664;</div>
         </BackTop>
       </div>
   )

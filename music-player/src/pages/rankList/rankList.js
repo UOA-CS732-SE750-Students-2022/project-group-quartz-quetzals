@@ -8,7 +8,6 @@ import {getSongPlay, getSongUrl} from "../../common/service/album";
 import {changeSongListAction, changeSongListNextAction} from "../mainContent/store/actionCreator";
 import {Avatar, BackTop, notification, Spin} from "antd";
 
-import img1 from "../../assets/image/1.png";
 import p_3812895 from "../../assets/rank_pic/3812895.jpg";
 import p_60198 from "../../assets/rank_pic/60198.jpg";
 import p_2809577409 from "../../assets/rank_pic/2809577409.jpg";
@@ -77,11 +76,11 @@ function RankList(prop){
     width: 40,
     lineHeight: '40px',
     borderRadius: '50%',
-    border: '1px solid #1088e9',
-    color: '#1088e9',
+    border: '1px solid #666',
+    color: '#666',
     backgroundColor:'#fff',
     textAlign: 'center',
-    fontSize: 14,
+    fontSize: 30,
     fontWeight:'bold'
   };
 
@@ -120,7 +119,7 @@ function RankList(prop){
               <SideBar/>
             </div>
           <BackTop>
-            <div style={style}>UP</div>
+            <div className="iconfont" style={style}>&#xe664;</div>
           </BackTop>
         </div>
         </Spin>

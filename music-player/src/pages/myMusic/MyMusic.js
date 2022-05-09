@@ -27,7 +27,7 @@ function MyMusic(){
         <div className="my-music-wrapper">
             <Layout className='main-wrapper'>
                 <Content className='playlist-content-container'>
-                    <Title title={<h1>My music</h1>}/>
+                    <Title title={<h2 style={{color:'#666'}}>My music</h2>}/>
                         <List
                             itemLayout="horizontal"
                             dataSource={songList}

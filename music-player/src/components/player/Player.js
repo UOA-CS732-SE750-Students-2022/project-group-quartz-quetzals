@@ -67,12 +67,12 @@ function Player(){
   function nextSong(){
     dispatch(changeSongListNextAction(songList.shift()))
     audioRef.current.play()
-    console.log('下一首')
+    setActive(true)
   }
   function prevSong(){
     dispatch(changeSongListPrevAction(songList.pop()))
     audioRef.current.play()
-    console.log('上一首')
+    setActive(true)
   }
 
   return(
@@ -87,9 +87,9 @@ function Player(){
         <div id="control-panel" className={[active ? 'control-panel active':'control-panel']} >
           <img src={picUrl} className="album-art"></img>
           <div className="controls">
-            <div className="prev" onClick={prevSong}></div>
-            <div id="play" className="play" onClick={playMusic}></div>
-            <div className="next" onClick={nextSong}></div>
+            <div className="prev iconfont" onClick={prevSong}></div>
+            <div id="play" className="play iconfont" onClick={playMusic}></div>
+            <div className="next iconfont" onClick={nextSong}></div>
           </div>
         </div>
         <audio
