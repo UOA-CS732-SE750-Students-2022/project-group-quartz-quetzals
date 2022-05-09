@@ -57,6 +57,10 @@ SideBar:
 2. When you click it you can enter the radio page.
 
 Radio Page:
+1. A music livestreaming page which plays the current hit songs on the music apps.
+2. Has the ability to swtich to the next song automatically once the previous one ends.
+3. Display the cover, name & artist(s) info of the currently playing song.
+4. User can mute the music by clicking the mute button, which the page will also give visual feedback to the user.
 
 ### `npm test`
 
