@@ -62,7 +62,7 @@ function RankList(prop){
         </div>
     );
     notification.open({
-      message: `Add song to playlist`,
+      message: `Add songs to playlist`,
       description:
       img,
     });
