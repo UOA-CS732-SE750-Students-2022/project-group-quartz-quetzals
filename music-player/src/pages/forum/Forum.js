@@ -51,7 +51,7 @@ let commentsData = [
       },
       {
         id:6,
-        content:"Suitable for one person to wear headphones 馃帶锛?Put on your favorite running shoes, run slowly around the park and keep running :)",
+        content:"Suitable for one person to wear headphones, Put on your favorite running shoes, run slowly around the park and keep running :)",
         date:'2022-04-22 00:07:02',
         user:{
           id:3,
