@@ -37,9 +37,18 @@ My Music Page:
 2. Delete songs from playlist.
 
 Forum Page:
-1. 
-Ranking Page:(New!,UK,Billboard,Beatport)
+1. Users can post their opinions about the songs.
+2. Users also can use the forum as a social website to find out who has the same taste as the user.
+3. Users can post their own comments on the forum. 
+4. Leave comments to someone else's comments.
+5. Post likes to other users.
 
+Ranking Page:(New!,UK,Billboard,Beatport)
+1. The ranking page gives the information about the ranking list.
+2. The ranking page gives Top 100 songs for users.
+3. Users also can click play botton to play the song.
+4. Users can click add botton to add songs to their playlist.
+5. The added songs will also be shown in MyMusic page.
 Singer Page:
 1. The singer page gives the information about the singer including name, followers and singer’s picture.
 2. The singer page gives TOP 20 songs for user which allow users to play.
