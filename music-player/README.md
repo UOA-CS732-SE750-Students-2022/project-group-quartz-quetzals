@@ -49,6 +49,7 @@ Ranking Page:(New!,UK,Billboard,Beatport)
 3. Users also can click play botton to play the song.
 4. Users can click add botton to add songs to their playlist.
 5. The added songs will also be shown in MyMusic page.
+
 Singer Page:
 1. The singer page gives the information about the singer including name, followers and singer’s picture.
 2. The singer page gives TOP 20 songs for user which allow users to play.
