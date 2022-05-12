@@ -29,9 +29,12 @@ async function getMusicUrl(id) {
     return promise.data.data[0].url;
 }
 
-
 const MyRadio = forwardRef((props, ref) => {
     const { Content } = Layout;
+    // Playing status.
+    const [playing, setPlaying] = useState(false);
+    const [firstClicked, setFirstClicked] = useState(false);
+    const aRef = useRef(null);
     const [musicList, setMusicList] = useReducer(musicListReducer, [])
 
     async function setMusic(data) {
@@ -58,13 +61,8 @@ const MyRadio = forwardRef((props, ref) => {
         }
     }, [musicList])
 
-    // Playing status.
-    const [playing, setPlaying] = useState(false);
-    const [firstClicked, setFirstClicked] = useState(false);
-    const aRef = useRef(null);
-    const a = "1234";
-
     function setCurrentTime(sec) {
+        // Set music current from api.
         aRef.current.currentTime = sec;
     }
 

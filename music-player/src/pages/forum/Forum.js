@@ -19,7 +19,7 @@ let currentUser = {
 let commentsData = [
   {
     id:1,
-    content:"like music ,joking :)",
+    content:"I don't know others. I'm dying in this song list... I rode the bike for more than half an hour. I'm the most beautiful boy on this road!!!!!!! :)",
     date:'2022-04-22 00:07:01',
     user:{
       id:1,
@@ -29,7 +29,7 @@ let commentsData = [
     commentList:[
       {
         id:4,
-        content:"me too :)",
+        content:"Listening to the song list, my blood is boiling. I've been running around the playground for more than 200 laps :)",
         date:'2022-04-22 00:07:02',
         user:{
           id:2,
@@ -39,7 +39,7 @@ let commentsData = [
         answerList:[
           {
             id:5,
-            content:"thanks :)",
+            content:":)",
             date:'2022-04-22 00:07:02',
             user:{
               id:1,
@@ -51,7 +51,7 @@ let commentsData = [
       },
       {
         id:6,
-        content:"haha :)",
+        content:"Suitable for one person to wear headphones, Put on your favorite running shoes, run slowly around the park and keep running :)",
         date:'2022-04-22 00:07:02',
         user:{
           id:3,
@@ -62,7 +62,7 @@ let commentsData = [
     ]
   },{
     id:2,
-    content:"like music ,joking :)",
+    content:"After listening, I feel that I have the admission letter of Tsinghua University in front of me :)",
     date:'2022-04-22 00:07:01',
     user:{
       id:1,
@@ -72,7 +72,7 @@ let commentsData = [
     commentList:[
       {
         id:7,
-        content:"me too :)",
+        content:"Make up your homework. It's refreshing to listen to this :)",
         date:'2022-04-22 00:07:02',
         user:{
           id:2,
@@ -82,7 +82,7 @@ let commentsData = [
       },
       {
         id:8,
-        content:"wawa :)",
+        content:"hahahaha :)",
         date:'2022-04-22 00:07:02',
         user:{
           id:3,
@@ -94,7 +94,7 @@ let commentsData = [
   },
   {
     id:3,
-    content:"lala la ..la la la:)",
+    content:"I, who made the sports song list... Haven't exercised for two weeks",
     date:'2022-04-22 00:07:01',
     user:{
       id:2,
@@ -114,7 +114,7 @@ let commentsData = [
         answerList:[
           {
             id:10,
-            content:"thanks :)",
+            content:"After listening to this song list, I felt full of strength. I immediately got up and did two push ups, and then continued to lie down and play with my mobile phone",
             date:'2022-04-22 00:07:02',
             user:{
               id:2,
@@ -122,22 +122,13 @@ let commentsData = [
               avatar:'/icon/user2.jpeg'
             },
            },
-            {
-              id:11,
-              content:"thanks :)",
-              date:'2022-04-22 00:07:02',
-              user:{
-                id:2,
-                nickName:"hello world2",
-                avatar:'/icon/user2.jpeg'
-             }
-          }
         ]
       }
     ]
   }
 
 ]
+
 
 const formateDate = function (date){
   if(!date){
