@@ -1,9 +1,8 @@
-# project-group-quartz-quetzals
+# Music player
 CS732/SE750 group repository for the Quartz Quetzals
 
-## Music player
-
 ## Function
+
 ### `Navigation Bar:`
 1. Jump to the target ranking page.
 2. Search songs and play the selected song.
