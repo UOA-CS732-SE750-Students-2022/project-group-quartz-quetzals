@@ -24,4 +24,10 @@ export function getSongUrl(id){
     url: `/song/url?id=${id}&cookie=${cookie}`
   })
 }
+export function getAlbumListAnother(){
+  return request({
+    url:'/album/new?area=EA&limit=12'
+  })
+}
+
 

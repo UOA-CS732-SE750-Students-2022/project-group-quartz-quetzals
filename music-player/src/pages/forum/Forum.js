@@ -147,6 +147,7 @@ function Forum(props){
   const [comments,setComments] = useState(commentsData)
 
   const [commentRefs,setCommentRefs] = useState({})
+  console.log(commentRefs)
 
   function answerComment(commentId,commentId2,message){
       //console.log(commentId,commentId2,message);
@@ -172,7 +173,7 @@ function Forum(props){
                     document.querySelector('#id'+commentId+commentId2).value= "";
                     commentRefs["_dt"+commentId2+"input"].resizableTextArea.textArea.value = "";
                     setCommentRefs(commentRefs)
-                  },500)
+                  },5000)
                   commentRefs["_dt"+commentId2+"toggle"] = 0;
                   commentRefs["docomment"+commentId2].style.display="none";
                 }
@@ -200,7 +201,7 @@ function Forum(props){
           document.querySelector('#id'+commentId+"_input").value= "";
           commentRefs["o_dt"+commentId+"_input"].resizableTextArea.textArea.value = "";
           setCommentRefs(commentRefs);
-        },500)
+        },5000)
       }
     }
   }
@@ -224,7 +225,7 @@ function Forum(props){
         commentRefs["topInput"].resizableTextArea.textArea.value = "";
       }
       setCommentRefs(commentRefs)
-    },500)
+    },5000)
   }
 
   function doLike(commentId){

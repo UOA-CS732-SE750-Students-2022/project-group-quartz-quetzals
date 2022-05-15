@@ -1,14 +1,14 @@
 .side-bar{
-  width: 200px;
+  width: 225px;
   height: 490px;
   padding: 10px;
-  margin:  17px 15px;
+  margin:  17px 5px;
   background: #fafafa;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   .side-bar-content{
     width:97%;
-    height: 65px;
+    height: 85px;
     background:  #f4f4f4;
     margin-top: 15px;
     .side-bar-item{
@@ -16,7 +16,8 @@
       display: flex;
       .side-text{
         flex: 1;
-        height: 65px;
+        height: 85px;
+        width: 135.84px;
         float: right;
         font-size: 10px;
         background: transparent;
@@ -33,6 +34,7 @@
         background: rgba(0,0,0,0.05);
       }
       .box{
+        margin-top: 9px;
         width: 65px;
         height: 65px;
         position: relative;
