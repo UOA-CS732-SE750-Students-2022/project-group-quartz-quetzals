@@ -57,3 +57,7 @@ CS732/SE750 group repository for the Quartz Quetzals
 2. Has the ability to swtich to the next song automatically once the previous one ends.
 3. Display the cover, name & artist(s) info of the currently playing song.
 4. User can mute the music by clicking the mute button, which the page will also give visual feedback to the user.
+
+### `Backend:`
+1. Allow frontend retrieve the playback progress which allows users listen to same music with same progress.
+2. Allow users to retrieve translated comments from Netease API (Not used).
