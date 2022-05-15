@@ -18,6 +18,9 @@ it('successfully get song info', async () => {
 it('successfully get song play', async () => {
     const result = await getSongPlay(114514);
     expectResult(result);
+    expect(result.songs[0].name!==null).toBe(true);
+    expect(result.songs[0].ar!==null).toBe(true);
+    expect(result.songs[0].al.picUrl!==null).toBe(true);
 });
 
 it('successfully get song url', async () => {
