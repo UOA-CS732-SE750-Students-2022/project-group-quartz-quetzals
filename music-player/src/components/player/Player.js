@@ -17,6 +17,7 @@ function Player(){
   const [picUrl,setPicUrl] = useState('');
   const [singer,setSinger] = useState('')
   const audioRef = useRef();
+  const dispatch = useDispatch()
 
   const { songList } = useSelector(
       (state) => ({
@@ -32,6 +33,9 @@ function Player(){
   useEffect(()=>{
     var audio = document.getElementById("audio")
     audio.loop = true
+    audioRef.current.onended = function (){
+      dispatch(changeSongListNextAction(songList.shift()))
+    }
     if(songList[0].url!==audioRef.current.src){
       audioRef.current.src = songList[0].url
       setName(songList[0].name)
@@ -62,17 +66,17 @@ function Player(){
       setActive(true)
     }
   }
-  const dispatch = useDispatch()
+
 
   function nextSong(){
     dispatch(changeSongListNextAction(songList.shift()))
     audioRef.current.play()
-    console.log('下一首')
+    setActive(true)
   }
   function prevSong(){
     dispatch(changeSongListPrevAction(songList.pop()))
     audioRef.current.play()
-    console.log('上一首')
+    setActive(true)
   }
 
   return(
@@ -80,16 +84,13 @@ function Player(){
         <div id="info" className={[active ? 'info active':'info']}>
           <span className="artist">{name}</span>
           <span>{singer}</span>
-          {/*<div className="progress-bar">*/}
-          {/*  <div className="bar"></div>*/}
-          {/*</div>*/}
         </div>
         <div id="control-panel" className={[active ? 'control-panel active':'control-panel']} >
           <img src={picUrl} className="album-art"></img>
           <div className="controls">
-            <div className="prev" onClick={prevSong}></div>
-            <div id="play" className="play" onClick={playMusic}></div>
-            <div className="next" onClick={nextSong}></div>
+            <div className="prev iconfont" onClick={prevSong}></div>
+            <div id="play" className="play iconfont" onClick={playMusic}></div>
+            <div className="next iconfont" onClick={nextSong}></div>
           </div>
         </div>
         <audio

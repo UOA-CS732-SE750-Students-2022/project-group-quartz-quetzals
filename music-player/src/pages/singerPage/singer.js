@@ -53,6 +53,7 @@ function Singer(){
     getData12().then(()=>{
       getData1()
     })
+    window.scrollTo(0, 0);
   }, [id])
 
   return(

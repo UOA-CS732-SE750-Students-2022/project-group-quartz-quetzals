@@ -1,11 +1,16 @@
 import "./Title.scss"
+import {useNavigate} from "react-router-dom";
 
 function Title(props){
   const {
     title,
     navList,
-    changeTab
+    changeTab,
+    more,
+    moreLink,
+    moreFunction
   } = props
+  const navigate = useNavigate();
   return(
       <div className="title-bar">
         <div className="title">{title}</div>
@@ -16,13 +21,19 @@ function Title(props){
             )
           })}
         </div>
-        <div className="more-btn">
+        <div className={moreLink?'more-btn':'more-btn-false'}
+             onClick={()=>{
+               navigate(moreLink)
+             }}
+        >
           More
         </div>
+        <div className={more?'more-btn':'more-btn-false'} onClick={moreFunction}>More</div>
       </div>
   )
 }
 Title.defaultProps={
-  navList:[]
+  navList:[],
+  more:false
 }
 export default Title
