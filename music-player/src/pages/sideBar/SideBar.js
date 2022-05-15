@@ -36,11 +36,10 @@ function SideBar(){
               </div>
 
               <Link to='/room' style={{color:'#fff'}}>
-              <div className="side-text">
-                <p><b>{item.name}</b></p>
-
-                <p>{item.company}</p>
-              </div>
+                <div className="side-text">
+                  <div><b>{item.name}</b></div>
+                  <p>{item.company}</p>
+                </div>
               </Link>
             </div>
           </div>

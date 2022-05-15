@@ -14,30 +14,28 @@
     .side-bar-item{
       text-align: center;
       display: flex;
-      .side-text{
+      a{
         flex: 1;
-        height: 85px;
-        width: 135.84px;
-        float: right;
-        font-size: 10px;
-        background: transparent;
-        padding: 10px;
-        color:#595959;
-        border: 1px solid #e9e9e9;
-        cursor: pointer;
-        p{
-          width: 100%;
+        .side-text{
+          display: block;
+          font-size: 12px;
+          background: transparent;
+          padding: 10px 5px;
+          color:#595959;
+          border: 1px solid #e9e9e9;
+          cursor: pointer;
+          height: 85px;
+          overflow: hidden;
+        }
+        .side-text:hover{
+          color:#222;
+          background: rgba(0,0,0,0.05);
         }
       }
-      .side-text:hover{
-        color:#222;
-        background: rgba(0,0,0,0.05);
-      }
       .box{
-        margin-top: 9px;
-        width: 65px;
-        height: 65px;
-        position: relative;
+        width: 83px;
+        height: 83px;
+        //position: relative;
         overflow: hidden;
         border: 1px solid #e9e9e9;
         img{
