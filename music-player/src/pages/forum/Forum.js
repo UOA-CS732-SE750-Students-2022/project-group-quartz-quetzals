@@ -19,7 +19,7 @@ let currentUser = {
 let commentsData = [
   {
     id:1,
-    content:"like music ,joking :)",
+    content:"I don't know others. I'm dying in this song list... I rode the bike for more than half an hour. I'm the most beautiful boy on this road!!!!!!! :)",
     date:'2022-04-22 00:07:01',
     user:{
       id:1,
@@ -29,7 +29,7 @@ let commentsData = [
     commentList:[
       {
         id:4,
-        content:"me too :)",
+        content:"Listening to the song list, my blood is boiling. I've been running around the playground for more than 200 laps :)",
         date:'2022-04-22 00:07:02',
         user:{
           id:2,
@@ -39,7 +39,7 @@ let commentsData = [
         answerList:[
           {
             id:5,
-            content:"thanks :)",
+            content:":)",
             date:'2022-04-22 00:07:02',
             user:{
               id:1,
@@ -51,7 +51,7 @@ let commentsData = [
       },
       {
         id:6,
-        content:"haha :)",
+        content:"Suitable for one person to wear headphones, Put on your favorite running shoes, run slowly around the park and keep running :)",
         date:'2022-04-22 00:07:02',
         user:{
           id:3,
@@ -62,7 +62,7 @@ let commentsData = [
     ]
   },{
     id:2,
-    content:"like music ,joking :)",
+    content:"After listening, I feel that I have the admission letter of Tsinghua University in front of me :)",
     date:'2022-04-22 00:07:01',
     user:{
       id:1,
@@ -72,7 +72,7 @@ let commentsData = [
     commentList:[
       {
         id:7,
-        content:"me too :)",
+        content:"Make up your homework. It's refreshing to listen to this :)",
         date:'2022-04-22 00:07:02',
         user:{
           id:2,
@@ -82,7 +82,7 @@ let commentsData = [
       },
       {
         id:8,
-        content:"wawa :)",
+        content:"hahahaha :)",
         date:'2022-04-22 00:07:02',
         user:{
           id:3,
@@ -94,7 +94,7 @@ let commentsData = [
   },
   {
     id:3,
-    content:"lala la ..la la la:)",
+    content:"I, who made the sports song list... Haven't exercised for two weeks",
     date:'2022-04-22 00:07:01',
     user:{
       id:2,
@@ -114,7 +114,7 @@ let commentsData = [
         answerList:[
           {
             id:10,
-            content:"thanks :)",
+            content:"After listening to this song list, I felt full of strength. I immediately got up and did two push ups, and then continued to lie down and play with my mobile phone",
             date:'2022-04-22 00:07:02',
             user:{
               id:2,
@@ -122,22 +122,13 @@ let commentsData = [
               avatar:'/icon/user2.jpeg'
             },
            },
-            {
-              id:11,
-              content:"thanks :)",
-              date:'2022-04-22 00:07:02',
-              user:{
-                id:2,
-                nickName:"hello world2",
-                avatar:'/icon/user2.jpeg'
-             }
-          }
         ]
       }
     ]
   }
 
 ]
+
 
 const formateDate = function (date){
   if(!date){
@@ -158,14 +149,14 @@ function Forum(props){
   const [commentRefs,setCommentRefs] = useState({})
 
   function answerComment(commentId,commentId2,message){
-      console.log(commentId,commentId2,message);
+      //console.log(commentId,commentId2,message);
       for(let i = 0 ; i < comments.length ; i ++){
         if(comments[i].id === commentId){
-          console.log(comments[i])
+          //console.log(comments[i])
           if( comments[i].commentList){
             for(let j = 0 ; j < comments[i].commentList.length ; j ++){
                 if(comments[i].commentList[j].id === commentId2){
-                  console.log(comments[i].commentList[j])
+                  //console.log(comments[i].commentList[j])
                   if(!comments[i].commentList[j].answerList){
                     comments[i].commentList[j].answerList = [];
                   }
@@ -228,7 +219,10 @@ function Forum(props){
     localStorage.setItem("comments",JSON.stringify(comments))
     setTimeout(function(){
       document.querySelector("#topInput").value= "";
-      commentRefs["topInput"].resizableTextArea.textArea.value = "";
+      if(commentRefs["topInput"]&& commentRefs["topInput"].resizableTextArea
+      && commentRefs["topInput"].resizableTextArea.textArea){
+        commentRefs["topInput"].resizableTextArea.textArea.value = "";
+      }
       setCommentRefs(commentRefs)
     },500)
   }
@@ -255,7 +249,7 @@ function Forum(props){
           localStorage.setItem("comments",JSON.stringify(comments))
         }else{
             commentRefs["otd"+commentId+"like"].style.color='#888';
-          comments[i].likeList =newLikeList;
+            comments[i].likeList =newLikeList;
         }
       }
     }
@@ -279,7 +273,7 @@ function Forum(props){
               Comments
             </div>
             <div>
-              Total {comments.length} comments
+              Total <span data-testid="commentNum">{comments.length}</span> comments
             </div>
           </div>
           <Divider style={{margin:"0 0 0.5em 0"}}/>
@@ -287,6 +281,7 @@ function Forum(props){
               <CommentOutlined  style={{fontSize:"2em",color:'#666'}} />
               <TextArea rows={2}
                 id = {"topInput"}
+               data-testid="topInput"
                ref={
                  (node)=>{
                    if(node){
@@ -300,6 +295,7 @@ function Forum(props){
           </div>
           <div className ="butarea" >
              <Button type="primary"
+             data-testid="topBtn"
              onClick={(event)=>{
                let message = commentRefs["topInput"].resizableTextArea.textArea.value;
                if(!message){
@@ -326,7 +322,7 @@ function Forum(props){
             }).map((comment,index)=>{
               let comment1 =comment;
               return (
-                  <div key={index} className="itemComment">
+                  <div key={index} role="commentpis" className="itemComment">
                     <div className="commentAreaUser">
                       <div>
                         <Avatar shape="circle" size={64} src={process.env.PUBLIC_URL + comment.user.avatar} />
@@ -344,6 +340,7 @@ function Forum(props){
                     <div className="commentOpInner">
                       <div className="item like">
                         <LikeFilled
+                        role="likeicon"
                         ref={
                           (node)=>{
                             commentRefs["otd"+comment.id+"like"] = node;
@@ -370,7 +367,7 @@ function Forum(props){
                         comment.commentList?.map((comment,index2)=>{
                           let comment2 =comment;
                           return (
-                            <div key={index+"-"+index2}>
+                            <div key={index+"-"+index2}  role="commentpisanswer">
                               <div className="commentAreaUser">
                                 <div>
                                   <Avatar shape="circle" size={23} src={process.env.PUBLIC_URL + comment.user.avatar} />
@@ -379,6 +376,7 @@ function Forum(props){
                                   <div className="reply">
                                       <h3 className="nickName">{comment.user.nickName}</h3>
                                       <span
+                                       role="commentpisanswershow"
                                        onMouseOver={()=>{
                                          commentRefs["anser"+comment.id].style.display='inline-block'
                                        }}
@@ -391,7 +389,7 @@ function Forum(props){
                                              commentRefs[prop].style.display = 'none'
                                            }
                                          }
-                                         console.log(commentRefs["_docomment"+comment.id+"toggle"])
+                                         //console.log(commentRefs["_docomment"+comment.id+"toggle"])
                                          if(commentRefs["_dt"+comment.id+"toggle"] ===0){
                                            commentRefs["_dt"+comment.id+"toggle"] =1;
                                             commentRefs["docomment"+comment.id].style.display='flex';
@@ -435,6 +433,7 @@ function Forum(props){
                               }}
                                style={{paddingRight:'2em',paddingLeft:'2em',paddingBottom:'0.8em',display:'none'}}>
                                 <TextArea
+                                role="commentpisanswerTextArea"
                                 id={"id"+comment1.id+comment2.id}
                                 ref = {
                                   (node)=>{
@@ -444,6 +443,7 @@ function Forum(props){
                                 }
                                 rows={1} placeholder="continues..." maxLength={255} />
                                 <SendOutlined
+                                role="commentpisanswerImgBtn"
                                 onClick={()=>{
                                   let message = commentRefs["_dt"+comment.id+"input"].resizableTextArea.textArea.value;
                                   if(!message){
@@ -456,7 +456,7 @@ function Forum(props){
                               <div className="answerArea">
                               {
                                 comment.answerList?.map((comment,index3)=>{
-                                    return <div  key={index+"-"+index2+"-"+index3}>
+                                    return <div     key={index+"-"+index2+"-"+index3}>
                                     <div className="commentAreaUser">
                                       <div>
                                         <Avatar shape="circle" size={23} src={process.env.PUBLIC_URL + comment.user.avatar} />
@@ -482,6 +482,7 @@ function Forum(props){
                     </div>
                     <div className="continueComment">
                       <TextArea rows={1}
+                      role="outerCommentAnswerTextArea"
                       id={"id"+comment.id+"_input"}
                       ref={
                         (node)=>{
@@ -494,6 +495,7 @@ function Forum(props){
                       }
                        placeholder="continues..." maxLength={255} />
                       <SendOutlined
+                        role="outerCommentAnswerImgBtn"
                         onClick={
                           ()=>{
                             let message = commentRefs["o_dt"+comment.id+"_input"].resizableTextArea.textArea.value;

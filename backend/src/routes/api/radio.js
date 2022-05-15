@@ -1,6 +1,8 @@
 const express = require('express');
 const axios = require('axios')
 
+// Idea from https://blog.csdn.net/sinat_39013092/article/details/121352204 (In Chinese).
+
 const router = express.Router();
 
 let playList = [];
@@ -26,7 +28,6 @@ function getSongs() {
                 url: 'https://netease-cloud-music-api-lime-zeta.vercel.app/song/detail?ids=' + playlistIdList.join(',')
             }).then(function (res) {
                 // Push all songs into playlist.
-
                 res.data.songs.map((value) => {
                     pushMusic(value);
                 });
@@ -58,9 +59,9 @@ function calculateRadioProcess() {
     // Run every one second to add 1 to process_s or switch to another song.
     setInterval(() => {
         if (process_s > playList[song_index].duration) {
+            // If song index reach the end, reset index to 0.
             song_index = song_index + 1 >= playList.length ? 0 : song_index + 1
             process_s = 0
-            console.log("Next song", playList[song_index])
         } else {
             process_s += 1
         }

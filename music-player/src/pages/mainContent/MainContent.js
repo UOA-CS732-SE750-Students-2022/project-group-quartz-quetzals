@@ -9,7 +9,7 @@ import {getRankingList} from "../../common/service/ranking";
 import {useNavigate} from "react-router-dom";
 import {changeSongListAction, changeSongListNextAction} from "./store/actionCreator";
 import {useDispatch} from "react-redux";
-import {Avatar, notification} from "antd";
+import {Avatar, BackTop, notification, Spin} from "antd";
 
 import p_3812895 from "../../assets/rank_pic/3812895.jpg";
 import p_60198 from "../../assets/rank_pic/60198.jpg";
@@ -20,6 +20,8 @@ import p_180106 from "../../assets/rank_pic/180106.jpg";
 
 
 function MainContent(){
+  const [num,setNum] =useState(6);
+  const [singerType,setSingerType] = useState(1)
   const [artistList,setArtistList] = useState([])
   const [albumList,setAlbumLIst] = useState([])
   const album = albumList || [];
@@ -36,13 +38,28 @@ function MainContent(){
     navigate('/singer/'+id)
   }
   function changeTab(index){
-    getArtistList(index,6).then((res)=>{
+    setLoading(true)
+    setSingerType(index)
+    setNum(6)
+    getArtistList(index,num).then((res)=>{
       setArtistList(res && res.artists);
+      setLoading(false)
+    })
+  }
+  function moreSinger(){
+    setLoading(true)
+    if(num >=30){
+      setNum(6)
+    }else {
+      setNum(num+6)
+    }
+    getArtistList(singerType,num+6).then((res)=>{
+      setArtistList(res && res.artists);
+      setLoading(false)
     })
   }
   async function getData(){
-    setLoading(true)
-    let artists = await getArtistList(1,6)
+    let artists = await getArtistList(singerType,num)
     setArtistList(artists && artists.artists);
     let album = await getAlbumList()
     setAlbumLIst(album && album.albums)
@@ -55,7 +72,6 @@ function MainContent(){
   }
   useEffect(()=>{
     getData().then(()=>{
-      setLoading(false)
     })
   },[])
   const navList= [
@@ -92,13 +108,31 @@ function MainContent(){
     dispatch(changeSongListNextAction({...url.data[0],name,picUrl,ar}))
     openNotification(name,picUrl,ar)
   }
+  const style = {
+    height: 40,
+    width: 40,
+    lineHeight: '40px',
+    borderRadius: '50%',
+    border: '1px solid #666',
+    color: '#666',
+    backgroundColor:'#fff',
+    textAlign: 'center',
+    fontSize: 30,
+    fontWeight:'bold'
+  };
   return(
       <div>
         {<div className="main-content-wrapper">
           <div className="left-side">
-            <Title navList={navList}  changeTab={changeTab}  title="Popular Singer"/>
+            <Title navList={navList}
+                   changeTab={changeTab}
+                   title="Popular Singer"
+                   more={true}
+                   moreFunction={moreSinger}
+            />
+            <Spin spinning={loading || artist.length===0}>
             <div className="recommend-album">
-              {artist && artist.map((item,index)=>{
+              {artist && artist.slice(num-6,num).map((item,index)=>{
                 return(
                     <div className="album-box" key={index} onClick={()=>handleSinger1(item.id)}>
                       <div className="box">
@@ -109,7 +143,9 @@ function MainContent(){
                 )
               })}
             </div>
+            </Spin>
             <Title title="New Album"/>
+            <Spin spinning={album.length===0}>
             <div className="new-album">
               {album && album.map((item,index)=>{
                 return(
@@ -122,11 +158,12 @@ function MainContent(){
                 )
               })}
             </div>
-            <Title title="Ranking"/>
+            </Spin>
+            <Title title="Ranking" moreLink="/rankDetail/2809577409"/>
             <div className="rank-list">
               <div className="list">
                 <div className="title-box">
-                  <div className="title-img"><img width='80' height='80' src={p_180106}/></div>
+                  <div className="title-img"><img width='80' height='80' src={p_180106} alt=""/></div>
                   <div className="title-name">
                     -UK-
                     <div className="iconfont">
@@ -135,6 +172,7 @@ function MainContent(){
                     </div>
                   </div>
                 </div>
+                <Spin spinning={rank1.length===0}>
                 <div className="rank-list-box">
                   {rank1&&rank1.slice(0, 10).map((item,index)=>{
                     return(
@@ -149,6 +187,7 @@ function MainContent(){
                     )
                   })}
                 </div>
+                </Spin>
                 <div className="more"
                      onClick={()=>{
                        navigate("/rankDetail/180106")
@@ -157,7 +196,7 @@ function MainContent(){
               </div>
               <div className="list">
                 <div className="title-box">
-                  <div className="title-img"><img width='80' height='80' src={p_60198}/></div>
+                  <div className="title-img"><img width='80' height='80' src={p_60198} alt=""/></div>
                   <div className="title-name">
                     -Billboard-
                     <div className="iconfont">
@@ -166,6 +205,7 @@ function MainContent(){
                     </div>
                   </div>
                 </div>
+                <Spin spinning={rank2.length===0}>
                 <div className="rank-list-box">
                   {rank2&&rank2.slice(0, 10).map((item,index)=>{
                     return(
@@ -180,6 +220,7 @@ function MainContent(){
                     )
                   })}
                 </div>
+                </Spin>
                 <div className="more"
                      onClick={()=>{
                        navigate("/rankDetail/60198")
@@ -188,7 +229,7 @@ function MainContent(){
               </div>
               <div className="list">
                 <div className="title-box">
-                  <div className="title-img"><img width='80' height='80' src={p_3812895}/></div>
+                  <div className="title-img"><img width='80' height='80' src={p_3812895} alt=""/></div>
                   <div className="title-name">
                     -Beatport-
                     <div className="iconfont">
@@ -197,6 +238,7 @@ function MainContent(){
                     </div>
                   </div>
                 </div>
+                <Spin spinning={rank3.length === 0} >
                 <div className="rank-list-box">
                   {rank3&&rank3.slice(0, 10).map((item,index)=>{
                     return(
@@ -211,6 +253,7 @@ function MainContent(){
                     )
                   })}
                 </div>
+                </Spin>
                 <div className="more"
                      onClick={()=>{
                        navigate("/rankDetail/3812895")
@@ -223,6 +266,9 @@ function MainContent(){
             <SideBar/>
           </div>
         </div>}
+        <BackTop>
+          <div className="iconfont" style={style}>&#xe664;</div>
+        </BackTop>
       </div>
   )
 }

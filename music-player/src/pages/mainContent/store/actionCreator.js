@@ -1,31 +1,5 @@
 import * as actionTypes from "./constants";
 
-import { getAlbumList } from "../../../common/service/album";
-import { getArtistList } from "../../../common/service/artist";
-import { getRankingList } from "../../../common/service/ranking";
-// const changeAlbumListAction = (res) => ({
-//   type: actionTypes.CHANGE_ALBUM_LIST,
-//   res,
-// });
-//
-// const changeArtistListAction = (res) => ({
-//   type: actionTypes.CHANGE_ARTIST_LIST,
-//   res,
-// });
-//
-//
-// const changeRankingAction1 = (res) => ({
-//   type: actionTypes.CHANGE_RANKING_LIST1,
-//   res,
-// });
-// const changeRankingAction2 = (res) => ({
-//   type: actionTypes.CHANGE_RANKING_LIST2,
-//   res,
-// });
-// const changeRankingAction3 = (res) => ({
-//   type: actionTypes.CHANGE_RANKING_LIST3,
-//   res,
-// });
 export const changeSongListAction = (res) => ({
   type: actionTypes.CHANGE_SONG_LIST,
   res,
@@ -40,6 +14,11 @@ export const changeSongListNextAction = (res) => ({
   type: actionTypes.CHANGE_SONG_LIST_NEXT,
   res,
 });
+
+export const deleteSongAction =(res) => ({
+  type: actionTypes.DELETE_SONG,
+  res,
+})
 
 
 // export const getSongListAction = () =>{

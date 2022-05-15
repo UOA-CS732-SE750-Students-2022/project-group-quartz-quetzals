@@ -6,9 +6,8 @@ import SideBar from "../sideBar/SideBar";
 import {useDispatch} from "react-redux";
 import {getSongPlay, getSongUrl} from "../../common/service/album";
 import {changeSongListAction, changeSongListNextAction} from "../mainContent/store/actionCreator";
-import {Avatar, notification} from "antd";
+import {Avatar, BackTop, notification, Spin} from "antd";
 
-import img1 from "../../assets/image/1.png";
 import p_3812895 from "../../assets/rank_pic/3812895.jpg";
 import p_60198 from "../../assets/rank_pic/60198.jpg";
 import p_2809577409 from "../../assets/rank_pic/2809577409.jpg";
@@ -22,6 +21,7 @@ function RankList(prop){
     let _rank = await getRankingList(typeid)
     setRank(_rank && _rank.playlist.tracks)
   }
+  const [loading,setLoading] = useState(true)
   const list = {
     2809577409:'New!',
     180106:'UK',
@@ -62,17 +62,31 @@ function RankList(prop){
         </div>
     );
     notification.open({
-      message: `Add song to playlist`,
+      message: `Add songs to playlist`,
       description:
       img,
     });
   };
     useEffect(()=>{
       getData();
+      window.scrollTo(0, 0);
     },[typeid])
+  const style = {
+    height: 40,
+    width: 40,
+    lineHeight: '40px',
+    borderRadius: '50%',
+    border: '1px solid #666',
+    color: '#666',
+    backgroundColor:'#fff',
+    textAlign: 'center',
+    fontSize: 30,
+    fontWeight:'bold'
+  };
 
 
     return(
+        <Spin spinning={rank.length===0}>
         <div className="main-content-wrapper">
             <div className="list">
               <div className="title-box">
@@ -104,7 +118,11 @@ function RankList(prop){
             <div className="right-side">
               <SideBar/>
             </div>
+          <BackTop>
+            <div className="iconfont" style={style}>&#xe664;</div>
+          </BackTop>
         </div>
+        </Spin>
     );
 }
 export default RankList;
