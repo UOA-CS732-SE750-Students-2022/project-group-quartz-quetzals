@@ -1,4 +1,13 @@
 # Backend
+
+## To install the dependencies
+In the project directory, run:
+```sh
+npm install
+```
+to install the dependencies.
+
+
 ## To start the backend server
 In the project directory, you can run:
 ```sh
