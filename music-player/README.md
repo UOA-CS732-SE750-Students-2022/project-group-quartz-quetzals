@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Problem on installing dependencies
+
+If you failed to install the dependencies with npm, try install npm in version 8.5.5, this will fix the problem.
+
 ## Available Scripts
 
 In the project directory, you can run:
